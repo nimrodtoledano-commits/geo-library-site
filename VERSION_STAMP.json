@@ -1,11 +1,11 @@
 {
 "format": "geo-stamp/1",
-"version": "20261115133541",
-"index_sha256": "1c1e1a4373320f45e19a994957b1f7b6015ae23b90a055f220495d253cb1d801",
-"built_utc": "2026-11-15T13:35:41Z",
-"file_count": 820,
-"built_at": "2026-11-15T13:35:41Z",
-"files": 820,
+"version": "20261115141425",
+"index_sha256": "d359f693444adf8b48b08df2ae162d009bdaaaed5fe054fd9c65c46ed18e257c",
+"built_utc": "2026-11-15T14:14:25Z",
+"file_count": 822,
+"built_at": "2026-11-15T14:14:25Z",
+"files": 822,
 "img_count": 217,
 "shell": [
 "index.html",
