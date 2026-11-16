@@ -1,0 +1,19 @@
+{
+"format": "geo-stamp/1",
+"version": "20261116202000",
+"index_sha256": "6c9351c9d9e81d8efd997158ee12a6e891396d4db605f1f5841dbf09f8e8b735",
+"built_utc": "2026-11-16T20:20:00Z",
+"file_count": 770,
+"built_at": "2026-11-16T20:20:00Z",
+"files": 770,
+"img_count": 204,
+"shell": [
+"index.html",
+"manifest.webmanifest",
+"icon-192.png",
+"icon-512.png",
+"fb/firebase-app-compat.js",
+"fb/firebase-firestore-compat.js",
+"fb/firebase-messaging-compat.js"
+]
+}
