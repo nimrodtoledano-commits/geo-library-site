@@ -4523,11 +4523,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.2628540d2bf9.js"></script>
+<script src="d/0.3a0689e82178.js"></script>
 <script src="d/1.b964a9c141f9.js"></script>
 <script src="d/2.f79d8822bf82.js"></script>
 <script src="d/3.d561912297e4.js"></script>
-<script>/*geo-site-split/2 n=4 len=16479187 sha=e8e978a7c761fbe4bd9f9251b6999e27b36c381f33a5979afdcb9e0af6cd21d9*/(function(){var H=["2628540d2bf9", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16479187 sha=da297330b530166b841fc6d0c759733e1ffe4f496b4b02f0e18fe746bae6b310*/(function(){var H=["3a0689e82178", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -5514,6 +5514,7 @@ function betLine(key, iso){
 /* D13 · 2: בשער — במקום הרווח שבין הספירה לאחור ל«קראו את ההרחבה»: משפט התחזית המלא (בלי «…») ו«יקרה / לא יקרה».
    D17: שורת «בלי ניקוד» ירדה מהשער; השורה שמתחת לכפתורים קיימת רק אחרי בחירה («הימרת: יקרה · נבדק בעוד N יום») */
 function sgCoverBetHTML(s){
+  return '';   /* s101 SIGEV · D453 («אין בו הימורים, ואין בו מה אתה חושב»): אין «מה אתה חושב» וכפתורי «יקרה / לא יקרה» בשער */
   if(!s.test) return '';
   /* D49: בשער — «ההימור» (שורה אחת, דילמה) כשיש; «צדקנו אם…» המלא נשאר בהרחבה ובמסך התחזיות */
   s = Object.assign({}, s, {test: sgNoMark(s.bet || s.test)});   /* D25: בשער — בלי סימוני תיקון (בהרחבה הם נשארים) */
@@ -5522,6 +5523,7 @@ function sgCoverBetHTML(s){
     '<p class="bet-note cb-note'+(betLine(key, iso) ? '' : ' cb-empty')+'" role="status">'+betLine(key, iso)+'</p></div>';
 }
 function sgBetHTML(s){
+  return '';   /* s101 SIGEV · D453: אין «מה אתה חושב» בהרחבה */
   if(!s.test) return '';
   const key = sgBetKeyFor(SG.date, s.n), iso = sgBetDate(s), v = betGet(key);
   return '<section class="x-bet" id="x-bet" aria-labelledby="xb-h"><h2 id="xb-h">מה אתה חושב?</h2><p class="x-test">'+s.test+'</p>'+
@@ -5563,11 +5565,8 @@ function sgFinaleHTML(){
   return '<section class="finale" id="c'+SG_FI+'" data-i="'+SG_FI+'" aria-labelledby="fin-h">'+
     '<div class="fin-k">'+SG.date_he+' · סוף השבוע</div>'+
     '<h2 id="fin-h">סיימת את '+SGN+' הסיגנלים של השבוע</h2>'+
-    '<p class="fin-sub">'+FC.length+' תחזיות נרשמו. '+(res.length ? res.length+' הוכרעו, '+open+' פתוחות.' :
-      'אף אחת עוד לא הגיעה למועדה — כל אחת תיבדק בתאריך שלה, גם כשטעינו.')+'</p>'+
-    '<h3>לוח התוצאות</h3>'+sgBoardHTML()+
-    /* D13 · 3: הלוח מפנה למסך «תחזיות» — כל התחזיות, הבחירות שלך והמעקב לאורך שבועות */
-    '<p class="fin-fc"><button class="btn-quiet" type="button" data-fc="1">כל התחזיות והמעקב שלך ←</button></p>'+
+    /* s101 SIGEV · D453: «לוח התוצאות», ספירת התחזיות והקישור למסך התחזיות — לא מוצגים */
+
     ((SG.watchlist||[]).length ? '<h3>מה לעקוב בשבוע הבא</h3><ul class="wl">'+SG.watchlist.map(w=>'<li>'+w+'</li>').join('')+'</ul>' : '')+
     '<div class="fin-act"><button class="btn-solid" type="button" data-evidence="1"><span>לראיות — מה כתבו המכונים השבוע</span><span aria-hidden="true">←</span></button>'+
     '<button class="btn-quiet" type="button" data-goto="0">↑ חזרה לסיגנל 1</button></div>'+
@@ -5593,8 +5592,8 @@ function sgIndexList(){
     (s.watch&&s.watch.date ? sgCountdown(s.watch.date) : '')+(SG_ST.read.indexOf(s.n)>=0 ? ' · <span class="read-mk">נקרא</span>' : '')+'<span class="here"> · אתה כאן</span></span></button></li>').join('')+
     (SG_QI>=0 ? '<li><button type="button" class="s8" data-goto="'+SG_QI+'"'+(sgCur===SG_QI?' aria-current="true"':'')+'><span class="n">?</span><span class="t">השאלה הגדולה: '+SG.question.title+
       '</span><span class="m">ניתוח'+(SG.question.watch&&SG.question.watch.date ? ' · '+sgCountdown(SG.question.watch.date) : '')+'<span class="here"> · אתה כאן</span></span></button></li>' : '')+
-    '<li><button type="button" class="s7" data-goto="'+SG_FI+'"'+(sgCur===SG_FI?' aria-current="true"':'')+'><span class="n">✓</span><span class="t">סוף השבוע · לוח התוצאות</span><span class="m">'+
-      sgFC().length+' תחזיות · מה לעקוב<span class="here"> · אתה כאן</span></span></button></li></ol>'+
+    '<li><button type="button" class="s7" data-goto="'+SG_FI+'"'+(sgCur===SG_FI?' aria-current="true"':'')+'><span class="n">✓</span><span class="t">סוף השבוע · מה לעקוב</span><span class="m">'+
+      'מה לעקוב<span class="here"> · אתה כאן</span></span></button></li></ol>'+   /* s101 SIGEV r2 (D453): בלי מונה תחזיות */
     '<p class="sh-about"><button class="btn-quiet" type="button" data-about>על התדריך · מקורות ושיטה</button></p>';
 }
 function sgThemeBtn(){ return themeBtn(); }   /* D89: כפתור ההגדרות (⚙) — theme.js */
@@ -5731,6 +5730,7 @@ function sgFcSigLabel(f){
   return (f.sig!=null && sgSigIdx(f.sig)>=0) ? 'סיגנל '+f.sig : '';
 }
 function sgDrawerFc(){
+  return '';   /* s101 SIGEV · D453: «התחזיות שלך מול השבוע» וכפתורי ההצבעה במגירה — לא מוצגים */
   return '<section class="dw-fc" aria-labelledby="dwf-h"><h3 id="dwf-h">התחזיות שלך מול השבוע</h3><p class="dw-sum" role="status">'+sgFcSummary()+'</p>'+
     '<ol class="dw-list">'+sgFcSorted().map(f=>{
       const d = sgDays(f.date), wk = f.status==='open' && d!=null && d>=0 && d<=7;
@@ -5849,8 +5849,8 @@ function sgNextHTML(i, a){
       (s.editor ? '<span class="ed">'+sgEdFlat(s.editor)+'</span>' : '')+'</button>'; }
   if(i+1===SGN && SG_QI>=0) return '<button class="x-next s8" type="button" data-next="'+SG_QI+'"><span class="lab"><span>השאלה הגדולה'+ar+'</span><span>'+(a ? '' : 'אחרי '+SGN+' / '+SGN)+
     '</span></span><span class="t">'+SG.question.title+'</span><span class="k">'+(SG.question.kicker||'')+'</span></button>';
-  return '<button class="x-next s7" type="button" data-next="'+SG_FI+'"><span class="lab"><span>סוף השבוע'+ar+'</span><span>'+(a ? '' : '✓')+'</span></span><span class="t">לוח התוצאות ומה לעקוב</span>'+
-    '<span class="k">'+sgFC().length+' תחזיות נרשמו</span></button>';
+  return '<button class="x-next s7" type="button" data-next="'+SG_FI+'"><span class="lab"><span>סוף השבוע'+ar+'</span><span>'+(a ? '' : '✓')+'</span></span><span class="t">מה לעקוב</span>'+
+    '</button>';   /* s101 SIGEV r2 (D453): בלי «N תחזיות נרשמו» */
 }
 function sgSkelHTML(){ return '<div class="skel" aria-hidden="true"><i class="s"></i><i class="h"></i><i class="h2"></i><i class="r"></i>'+'<i></i>'.repeat(9)+'<i class="r"></i>'+'<i></i>'.repeat(6)+'</div>'; }
 const SG_HEAD = [['what','מה קרה',1],['who','מי זה ולמה זה שוקל',2],['number','המספר',3],['how','איך זה עובד',4],
@@ -5926,7 +5926,27 @@ function sgLedger(wf){
   const ok = rows.some(x=>x.right || x.wrong) && rows.every(x=>sgBal(x.what) && sgBal(x.right) && sgBal(x.wrong));
   return ok ? {rows: rows, marks: M.marks} : null;
 }
+/* s101 SIGEV r2 (D453/D437, REVIEW_SIGEV ח1): «מה לעקוב» נשאר — רק משפטי ההימור יורדים, משפט-משפט, בלקוח (הנתון לא נערך).
+   משפט הימור = «צדקנו/טעינו», «נדע ש…», «בסיכוי …», «N% סיכוי/הסתברות», «סיכוי/הסתברות של N%/אחוז», «אנחנו מעריכים/נהמר», «יקרה / לא יקרה».
+   משפט מעורב (אבן בוחן + הימור באותו משפט) יורד כולו — חוב, לא שכתוב (§66). טבלה (sgLedger) ⇒ רק «מתי» ו«מה». */
+const SG_BETSENT = /צדקנו|טעינו|נדע\s+ש|בסיכוי|\d+(?:[.,]\d+)?\s*%\s*(?:סיכוי|הסתברות)|(?:סיכוי|הסתברות)[^.;]{0,30}?\d+(?:[.,]\d+)?\s*(?:%|אחוז)|מעריכים|נהמר|מהמרים|יקרה\s*\/\s*לא\s+יקרה/;
+function sgNoBetSents(t){ return String(t||'').split(/(?<=[.!?])\s+(?=\S)/).filter(x=>x.trim() && !SG_BETSENT.test(x.replace(/<[^>]+>/g, ''))).join(' ').trim(); }
 function sgLedgerHTML(s){
+  if(!s.watch_full) return '';
+  const L = sgLedger(s.watch_full);
+  let body = '';
+  if(L){
+    const rows = L.rows.map(r=>({when:r.when, what:sgNoBetSents(r.what)})).filter(r=>r.what);
+    if(rows.length) body = '<table class="a-lg"><thead><tr><th scope="col">מתי</th><th scope="col">מה</th></tr></thead><tbody>'+
+      rows.map(r=>'<tr class="a-lg-note"><td class="a-lg-d">'+(r.when ? '<bdi>'+r.when+'</bdi>' : '')+'</td><td>'+sgBidi(r.what)+'.</td></tr>').join('')+'</tbody></table>'+
+      L.marks.map(m=>'<p class="a-fix">('+sgBidi(m)+')</p>').join('');
+  } else {
+    const t = sgNoBetSents(s.watch_full);
+    if(t) body = '<p>'+sgBidi(t)+'</p>';
+  }
+  return body ? '<section class="a-ledger" id="x-watch" data-n="7" aria-labelledby="x-watch-h"><h2 id="x-watch-h">מה לעקוב</h2>'+body+'</section>' : '';
+}
+function sgLedgerHTML_D453off(s){
   const L = sgLedger(s.watch_full), key = sgBetKeyFor(SG.date, s.n), iso = sgBetDate(s), v = betGet(key);
   let h = '<section class="a-ledger" id="x-watch" data-n="7" aria-labelledby="x-watch-h"><h2 id="x-watch-h">איך נדע אם צדקנו</h2>';
   if(L){
@@ -8930,6 +8950,8 @@ function fcHeadHTML(){
 function renderFc(){
   setCrumb('');
   const F = sgFC();
+  /* s101 SIGEV · D453 («אין בו הימורים, ואין בו מה אתה חושב»): בלי יומן תחזיות אין מסך הימורים — קישור ישן (?fc=1) עובר למסך הסיגנלים */
+  if(!F.length && typeof setTab==='function'){ setTab('signals'); return; }
   let h = fcHeadHTML()+'<div class="p12 fcp'+(FC_VIEW==='table' ? ' is-table' : '')+'">'+fcTapeHTML()+fcSegHTML();
   if(!F.length) h += '<p class="pg-empty">עוד אין תחזיות ביומן.</p>';
   else h += '<div id="fc-main">'+(FC_VIEW==='vs' ? fcVsHTML() : fcTableHTML())+'</div>';
@@ -13315,7 +13337,7 @@ function legendHTML(){
   h += '<h4>מי מדבר</h4><ul class="lg-list">'+
     '<li class="lg-row" data-lg="editor"><i class="lg-sw lg-ed" aria-hidden="true"></i><span><b class="ed-tag">הערכת העורך</b> הפרשנות שלנו. רק הקול הזה מקבל את הצבע הזה, בכל מסך.</span></li>'+
     '<li class="lg-row" data-lg="opinion"><i class="lg-sw lg-op" aria-hidden="true">א</i><span><span class="op-tag">דעה:</span> עמדה של הכותב במקור. בנטוי ובצבע הטקסט, בלי צבע משלה.</span></li></ul>';
-  h += '<h4>התחזיות</h4><ul class="board lg-board">'+[['right','צדקנו'],['wrong','טעינו'],['partial','חלקי: חלק מהתחזית התקיים'],['open','פתוח: המועד עוד לא הגיע']].map(x=>
+  if(false) h += '<h4>התחזיות</h4><ul class="board lg-board">'+   /* s101 SIGEV r2 (D453): מקרא «התחזיות — צדקנו/טעינו» לא מוצג */[['right','צדקנו'],['wrong','טעינו'],['partial','חלקי: חלק מהתחזית התקיים'],['open','פתוח: המועד עוד לא הגיע']].map(x=>
     '<li class="'+x[0]+'" data-lg="'+x[0]+'"><span class="mk" aria-hidden="true">'+MK[x[0]]+'</span><div class="what">'+x[1]+'</div></li>').join('')+'</ul>';
   h += '<h4>סרטון הסבר</h4><div class="lg-reel" data-lg="reel"><span class="btn-reel" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>'+
     '<span>צפו בסרטון ההסבר</span></span><p class="lg-note">הכפתור המלא בשער: סרטון הסבר קצר לסיגנל, נפתח בתוך הלוח.</p></div>';
