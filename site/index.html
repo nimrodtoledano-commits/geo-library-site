@@ -4511,11 +4511,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.a0708583f761.js"></script>
-<script src="d/1.ac7ef547fd8a.js"></script>
-<script src="d/2.931dc8bd2564.js"></script>
-<script src="d/3.3267cda3fab1.js"></script>
-<script>/*geo-site-split/2 n=4 len=16427560 sha=c562d3ceb5bc41b12c11a184d1fe523978d0496f684d14b09bafc5f8e318e0ae*/(function(){var H=["a0708583f761", "ac7ef547fd8a", "931dc8bd2564", "3267cda3fab1"],L=[4106890, 4106890, 4106890, 4106890],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script src="d/0.d7cf9a49e8a8.js"></script>
+<script src="d/1.b964a9c141f9.js"></script>
+<script src="d/2.3fef664a9598.js"></script>
+<script src="d/3.0b4a30685b5b.js"></script>
+<script>/*geo-site-split/2 n=4 len=16479187 sha=4b98a4ab0bcb1165ad1b9e9988e4e3fc962babceb927ea697dffd79f16ef9d99*/(function(){var H=["d7cf9a49e8a8", "b964a9c141f9", "3fef664a9598", "0b4a30685b5b"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -9180,7 +9180,9 @@ function e4FeedJoin(L, gate){
 function e4SnBadge(){ return '<span class="e4-snb" aria-label="נראה"><i aria-hidden="true"></i>נראה</span>'; }
 /* D141·F29 · «התדריך האחרון»: e.ed = תאריך המהדורה שבה האירוע הופיע לראשונה (build_mobile.py d141_fields). סיגנל מהמהדורה האחרונה
    שיש בה סיגנלים = «חדש מהתדריך» ⇒ ראשון ב«האירועים השבועיים», ב«סיגנלים שבועיים» ובשער (לפי ציון); אחריו השאר לפי ציון חי. */
-const E4LED = E4.reduce((m,e)=>(e.kind==='sig' && e.ed && e.ed>m) ? e.ed : m, '');
+/* s101 WEEKLY (D437 «הכותרות לא מתחדשות»): כמו unit.js (ULED) — סיגנלים הם «חדש מהתדריך» רק כשאין מהדורה חדשה יותר מהם (EV4.editions);
+   יצאה מהדורה בלי סיגנלים ⇒ הפריטים שלה הם החדשים, וסיגנלי השבוע הקודם לא נצמדים לראש בכל מהדורה. */
+const E4LED = (()=>{ const m = E4.reduce((m,e)=>(e.kind==='sig' && e.ed && e.ed>m) ? e.ed : m, ''); const d = ((EV4 && EV4.editions) || []).reduce((x,y)=>(y && y.date>x) ? y.date : x, ''); return (m && d && d>m) ? '' : m; })();
 function e4IsLatest(e){ return !!(e && E4LED && e.kind==='sig' && e.ed===E4LED); }
 function e4WkSort(a,b){ const la = e4IsLatest(a), lb = e4IsLatest(b);
   return ((lb?1:0)-(la?1:0)) || ((la && lb) ? ((b.sig+(b.boost||0))-(a.sig+(a.boost||0))) : 0) || (e4Live(b)-e4Live(a)) || (a.date<b.date?1:a.date>b.date?-1:0); }
