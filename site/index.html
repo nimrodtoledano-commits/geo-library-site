@@ -4511,11 +4511,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.892c331b17a0.js"></script>
-<script src="d/1.5f5f0f13f8e3.js"></script>
-<script src="d/2.7e43d6a7a67e.js"></script>
-<script src="d/3.9a8b4f31b149.js"></script>
-<script>/*geo-site-split/2 n=4 len=16381154 sha=fc9f9b23d83ec28d1b7505a389298548b2de58675a1c10899b8c6d84f63d892b*/(function(){var H=["892c331b17a0", "5f5f0f13f8e3", "7e43d6a7a67e", "9a8b4f31b149"],L=[4095289, 4095289, 4095289, 4095287],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script src="d/0.a0708583f761.js"></script>
+<script src="d/1.ac7ef547fd8a.js"></script>
+<script src="d/2.931dc8bd2564.js"></script>
+<script src="d/3.3267cda3fab1.js"></script>
+<script>/*geo-site-split/2 n=4 len=16427560 sha=c562d3ceb5bc41b12c11a184d1fe523978d0496f684d14b09bafc5f8e318e0ae*/(function(){var H=["a0708583f761", "ac7ef547fd8a", "931dc8bd2564", "3267cda3fab1"],L=[4106890, 4106890, 4106890, 4106890],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -5220,7 +5220,7 @@ function sgDateTag(s){ if(!s || !s.date) return ''; return sgGapDays(s)>SG_GAP_D
 /* D52 · סרטוני «רקע»: לא בשער. כפתור שפותח את אותה שכבת וידאו (openReelOverlay, D28) */
 function bgList(){ return (typeof D!=='undefined' && D.backgrounds) ? D.backgrounds : []; }
 function bgBtnHTML(b){ if(!b) return ''; const tt = String(b.title||'').replace(/"/g,'&quot;'), m = b.min ? (b.min<2 ? 'כ-'+Math.round(b.min*60)+' שניות' : 'כ-'+b.min+' דקות') : '';
-  return '<p class="bg-go"><button class="btn-bg" type="button" data-reel-src="'+b.src+'" data-reel-fallback="'+(b.url||b.src)+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
+  return '<p class="bg-go"><button class="btn-bg" type="button" data-reel-src="'+b.src+'" data-reel-fallback="'+rvFb(b.url||b.src)+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
     '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>'+
     '<span><b>רקע</b> '+b.title+'</span>'+(m ? '<small>'+m+'</small>' : '')+'</button></p>'; }
 function bgOf(ids){ const L = bgList(); return (ids||[]).map(id=>L.find(b=>b.id===id)).filter(Boolean); }
@@ -5334,15 +5334,16 @@ document.addEventListener('scroll', e=>{ const tr = e.target && e.target.classLi
    הוא ארטיפקט נפרד. הכתובת מ-status/research/video/reels.json (נקראת בבנייה, רק https). סיגנל בלי רילס — בלי שורה בכלל. */
 function sgReelHTML(s){
   /* D28: הרילס הוא קובץ נלווה באותו ארטיפקט (reels/<card>.html) ונפתח בשכבה על מסך מלא; הכתובת החיצונית נשארת כגיבוי */
-  const r = s && s.reel; if(!r || !/^https:\/\/[^\s"'<>]+$/.test(r.url||'')) return '';
+  /* s101 REELS (D432 ס׳1ד): reel.url = נתיב יחסי באתר (reels/<id>.html, tools/reel_policy.py) — נפתר מול baseURI (rvFb); כתובת https ישנה עדיין מתקבלת */
+  const r = s && s.reel, fbu = r ? rvFb(r.url) : ''; if(!r || !fbu) return '';
   const m = r.minutes ? Math.max(1, Math.round(r.minutes)) : 0;
   const src = (r.card && /^[\w-]+$/.test(r.card)) ? rvAbs('reels/'+r.card+'.html') : '';
   const tt = String(s.title||'').replace(/<[^>]+>/g,'').replace(/"/g,'&quot;');
-  if(!src) return '<p class="c-reel"><a class="btn-reel" href="'+r.url+'" target="_blank" rel="noopener" data-reel="'+s.n+'">'+
+  if(!src) return '<p class="c-reel"><a class="btn-reel" href="'+fbu+'" target="_blank" rel="noopener" data-reel="'+s.n+'">'+
     '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>'+
     '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>כ-'+m+' דקות</small>' : '')+'<span class="vh"> (נפתח בלשונית חדשה)</span></a></p>';
   const th = (s.img && /^(data:image\/|https:\/\/|img\/[0-9a-f]{64}\.(?:jpg|png|webp|gif)$)/.test(s.img)) ? ' style="background-image:url(\''+s.img+'\')"' : '';   /* D72: פריים מהסיגנל בכפתור (D69); s101: גם תמונה כקובץ img/<sha>.<ext> (הרזיה שלב 1) */
-  return '<p class="c-reel"><button class="btn-reel" type="button" data-reel="'+s.n+'" data-reel-src="'+src+'" data-reel-fallback="'+r.url+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
+  return '<p class="c-reel"><button class="btn-reel" type="button" data-reel="'+s.n+'" data-reel-src="'+src+'" data-reel-fallback="'+fbu+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
     '<span class="rth'+(th?'':' noimg')+'"'+th+'><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>'+
     '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>כ-'+m+' דקות</small>' : '')+'</button></p>';
 }
@@ -5353,9 +5354,14 @@ const RV_FB_MS = 10000;   /* v74: כמה זמן מחכים לרילס שלא ה�
 const RV_FB_OPAQUE_MS = 22000;   /* v74-fix · CRITIC M3: מסמך שאי אפשר לקרוא (ממקור אחר — מארח claude.ai) ⇒ אין «סימן חיים», רק load; ברשת איטית רילס ≈6–7MB לא מספיק ב-10 שנ׳ ⇒ מחכים 22 שנ׳, ורק פס הודעה, בלי window.open (ברירת מחדל מוצהרת — לא הכרעת בעלים) */
 /* D28-ב: כתובת מוחלטת לקובץ הנלווה — לפי baseURI של הדף (במארח של claude.ai הדף יושב בתיקיית הגרסה) */
 function rvAbs(rel){ try{ return new URL(rel, document.baseURI).href; }catch(e){ return rel; } }
+/* s101 REELS (D432 ס׳1ד): כתובת הגיבוי של רילס — תמיד מהאתר עצמו. נתיב יחסי reels/<id>.html ⇒ מול baseURI (תת-נתיב/שורש);
+   כתובת מוחלטת ל-/reels/<id> במארח כלשהו (web.app החסום, נתונים ישנים) ⇒ אותו קובץ באתר הנוכחי; כל https אחר נשאר; אחרת ''. */
+function rvFb(u){ u = String(u||''); let m = u.match(/^reels\/[\w-]+\.html$/); if(m) return rvAbs(u);
+  m = u.match(/^https?:\/\/[^\/\s"'<>]+\/reels\/([\w-]+?)(?:\.html)?\/?(?:[?#].*)?$/); if(m) return rvAbs('reels/'+m[1]+'.html');
+  return /^https:\/\/[^\s"'<>]+$/.test(u) ? u : ''; }
 function rvEl(){ return document.getElementById('rv-ov'); }
 function openReelOverlay(btn){
-  const src = btn.getAttribute('data-reel-src'), fb = btn.getAttribute('data-reel-fallback')||'', title = btn.getAttribute('data-reel-title')||'סרטון הסבר';
+  const src = btn.getAttribute('data-reel-src'), fb = rvFb(btn.getAttribute('data-reel-fallback')), title = btn.getAttribute('data-reel-title')||'סרטון הסבר';
   if(!src || RV_OPEN) return;
   let ov = rvEl();
   if(!ov){ ov = document.createElement('div'); ov.id = 'rv-ov'; ov.className = 'rv-ov'; ov.setAttribute('role','dialog'); ov.setAttribute('aria-modal','true'); document.body.appendChild(ov); }
