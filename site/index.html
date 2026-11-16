@@ -4511,11 +4511,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.94b128c78f53.js"></script>
+<script src="d/0.190caca49172.js"></script>
 <script src="d/1.b964a9c141f9.js"></script>
 <script src="d/2.f79d8822bf82.js"></script>
 <script src="d/3.d561912297e4.js"></script>
-<script>/*geo-site-split/2 n=4 len=16479187 sha=0ff0e848781ac638a55b1adceff2a64e4558a5e2936b3cf8dcb620cba37b1227*/(function(){var H=["94b128c78f53", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16479187 sha=b9c6df6b3c5e0b378ba7f0e051cdd6ead481ef2ad55407ceca547a1dc295a4d0*/(function(){var H=["190caca49172", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -6940,6 +6940,10 @@ if(typeof window!=='undefined' && window.addEventListener){
   window.addEventListener('beforeinstallprompt', e=>{ instBip = e; instRefresh(); });   /* בלי preventDefault — התנהגות הדפדפן לא משתנה; רק שומרים */
   window.addEventListener('appinstalled', ()=>{ instBip = null; instDone = true; instRefresh(); });
 }
+/* D444/D438: «תיקי נושא וארכיון» — הכפתור הקבוע (#hb-fab) ירד מהפינה; המגירה (hubs.js hbDrOpen) נפתחת מכאן. רכיבים קיימים (sp-card, sp-st, sp-pushgo) — בלי CSS חדש. */
+function hbdCardHTML(){ if(typeof hbDrOpen!=='function' || (typeof hbAvailable==='function' && !hbAvailable())) return '';
+  return '<section class="sp-card sp-hbd" id="sp-hbd" aria-labelledby="sp-hbd-h"><h3 id="sp-hbd-h">תיקי נושא וארכיון</h3><p class="sp-st">טריטוריות, נושאים קבועים, ארכיון ועוד.</p>'+
+    '<button type="button" class="sp-pushgo" data-stg-hbdr aria-haspopup="dialog" aria-controls="hb-drawer">פתיחה</button></section>'; }
 function stgPageHTML(){
   const m = (typeof themeMode==='function') ? themeMode() : 'dark', p = nsGet(), S = nsState();
   const modes = (typeof STG_MODES!=='undefined') ? STG_MODES : [['dark','כהה'],['light','בהיר'],['auto','לפי המכשיר']];
@@ -6950,7 +6954,7 @@ function stgPageHTML(){
     fsCardHTML()+axCardHTML()+
     '<section class="sp-card" aria-labelledby="sp-look-h"><h3 id="sp-look-h">מראה</h3><fieldset class="stg-f sp-seg sp-look" role="radiogroup"><legend class="sp-vh">מצב תצוגה</legend>'+
       modes.map(x=>'<button type="button" role="radio" class="stg-opt" data-stg-mode="'+x[0]+'" aria-checked="'+(m===x[0] ? 'true' : 'false')+'"><i aria-hidden="true"></i><span>'+x[1]+'</span></button>').join('')+'</fieldset></section>'+
-    instCardHTML()+
+    hbdCardHTML()+instCardHTML()+
     '<p class="stg-note sp-foot">ההגדרות נשמרות במכשיר הזה'+(S.owner ? ', ואצלך גם בענן' : '')+'.</p></div>';
 }
 /* עדכון במקום (בלי לבנות את העמוד מחדש): המיקוד נשאר על אותו כפתור */
@@ -6970,6 +6974,7 @@ if(typeof document!=='undefined' && document.addEventListener){
     const t = e.target && e.target.closest ? e.target : null; if(!t || !t.closest('#settings')) return;
     let b;
     if((b = t.closest('[data-onb-restart]'))){ if(typeof onbRestart==='function') onbRestart(); return; }   /* D138·4 */
+    if((b = t.closest('[data-stg-hbdr]'))){ if(typeof closeSettings==='function') try{ closeSettings(false); }catch(x){} setTimeout(()=>{ try{ if(typeof hbDrOpen==='function') hbDrOpen(null); }catch(x){} }, 200); return; }   /* D444 */
     if((b = t.closest('[data-fs]')) && b.closest('#sp-fs')){ fsSet(b.getAttribute('data-fs')); nsRefresh(); return; }   /* D136·F15 */
     if((b = t.closest('[data-ns-th]'))){ nsSet({th:+b.getAttribute('data-ns-th')}); nsRefresh(); return; }
     if((b = t.closest('[data-ns-open]'))){ nsSet({open:b.getAttribute('data-ns-open')}); nsRefresh(); return; }
@@ -10599,7 +10604,10 @@ if(typeof document!=='undefined' && document.addEventListener){
     if(HB_SHEET && !s.hb) hbClose(true); });
 }
 if(typeof window!=='undefined') window.__hubs = {model:()=>hbModel(), list:hbList, fresh:hbFresh, dots:hbDots, open:hbOpen, close:hbClose, drawer:()=>hbDrOpen(null), l2:hbL2HTML, moving:hbMoving, quiet:hbQuietHTML, quietOn:hbQuietOn, kpi:hbKpiHTML};
-hbFabInit();   /* D274·A.1 */
+/* D444 (מחליף את D274·A.1): «התיקייה» ירדה מהפינה הימנית-העליונה — «לגבי התקייה … אפשר להעביר אותה להגדרות» (D438). הכפתור הקבוע לא נוצר;
+   המגירה נפתחת מכרטיס «תיקי נושא וארכיון» בהגדרות (settings.js hbdCardHTML, data-stg-hbdr). hbFabInit נשאר (לא נקרא) — כדי לא לשבור קוד ישן שבודק אותו. */
+const HB_FAB = false;
+if(HB_FAB) hbFabInit();
 /* ===== s101 · GEO_D4_HUBNAV (D295 — «עיקר הניווט הוא על בסיס צמתים»; N14: ניווט לפי צמתים, גאוגרפיה סינון משני) =====
    נטען רק כשהמתג דלוק (ברירת מחדל; GEO_D4_HUBNAV=0 מכבה — tools/d4hub_build.py). כבוי ⇒ הקובץ לא בבנייה, והמגירה כמו היום.
    שינוי סדר בלבד, בלי רכיב חדש ובלי CSS חדש: מגירת התיקים מקבלת מקטע «צמתים» ראשון — שורה לכל צומת חי (לא רדום, ויש לו אירוע ב-14 הימים),
