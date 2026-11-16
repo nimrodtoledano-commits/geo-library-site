@@ -9,15 +9,23 @@ const IMG_RX = /^img\/([0-9a-f]{64})\.(?:jpg|png|webp|gif)$/, IMG_G = /img\/[0-9
 const abs = p => new URL(p, SC).href, IDX = abs('index.html');
 const hex = async b => [...new Uint8Array(await crypto.subtle.digest('SHA-256', b))].map(x => x.toString(16).padStart(2, '0')).join('');
 async function shellName(){ const ks = (await caches.keys()).filter(k => k.indexOf(SHELL_P) === 0).sort(); return ks.length ? ks[ks.length - 1] : null; }
-let busy = null;
-function check(){ if(!busy) busy = doCheck().catch(() => {}).then(() => { busy = null; }); return busy; }
-async function doCheck(){
-  const r = await fetch(abs('VERSION_STAMP.json'), {cache: 'no-store'}); if(!r.ok) return;
+const STAMP_MS = 2500;   // T282: כמה מחכים לחותמת בניווט לפני שמגישים מהמטמון (רשת איטית)
+const INDEX_MS = 8000;   // סבב 2: כמה מחכים ל-index חדש שלם (4MB דחוס; ברשת סלולרית איטית יותר — המטמון עכשיו, החדש נשמר ברקע לפתיחה הבאה; הערכה)
+async function stamp(){
+  const r = await fetch(abs('VERSION_STAMP.json'), {cache: 'no-store'}); if(!r.ok) return null;
   const st = await r.json();
-  if(!st || !/^[\w.-]{1,40}$/.test(String(st.version || '')) || !/^[0-9a-f]{64}$/.test(String(st.index_sha256 || ''))) return;
-  const name = SHELL_P + st.version + '-' + st.index_sha256.slice(0, 12), cur = await shellName();   // s101 סוקר N1: אותו שם גרסה עם index אחר ⇒ מטמון אחר ⇒ מתעדכן
+  return (st && /^[\w.-]{1,40}$/.test(String(st.version || '')) && /^[0-9a-f]{64}$/.test(String(st.index_sha256 || ''))) ? st : null;
+}
+const nameOf = st => SHELL_P + st.version + '-' + st.index_sha256.slice(0, 12);   // s101 סוקר N1: אותו שם גרסה עם index אחר ⇒ מטמון אחר ⇒ מתעדכן
+let chain = Promise.resolve();   // T282: בדיקות בתור אחד (לא במקביל) — השנייה רואה שהמעטפת כבר עודכנה ויוצאת בלי הורדה
+function check(st, ib){ const p = chain.then(() => doCheck(st, ib)).catch(() => {}); chain = p; return p; }
+async function doCheck(st0, ib0){
+  const st = st0 || await stamp(); if(!st) return;
+  const name = nameOf(st), cur = await shellName();
   if(cur === name && await (await caches.open(name)).match(IDX)) return imgs(name, false);
-  let ib = null;
+  let ib = (ib0 && await hex(ib0) === st.index_sha256) ? ib0 : null;
+  if(ib0 && !ib) return;   // T282: הגוף שהוגש בניווט לא תואם לחותמת (פריסה באמצע) ⇒ לא מורידים שוב עכשיו; ננסה בפתיחה הבאה
+  if(!ib)
   // התקנה ראשונה: הדף כבר הורד בניווט (לרוב לכתובת ה-scope עצמה) ⇒ קודם ממטמון ה-HTTP, ורק אחר כך מהרשת; עדכון ⇒ no-store בלבד. תמיד אימות sha256.
   for(const [u, mode] of (cur ? [[IDX, 'no-store']] : [[SC, 'force-cache'], [IDX, 'force-cache'], [IDX, 'no-store']])){
     try{ const x = await fetch(u, {cache: mode}); if(!x.ok) continue; const b = await x.arrayBuffer(); if(await hex(b) === st.index_sha256){ ib = b; break; } }catch(e){}
@@ -29,6 +37,24 @@ async function doCheck(){
   await c.put(IDX, new Response(ib, {headers: {'Content-Type': 'text/html; charset=utf-8'}}));
   for(const k of await caches.keys()) if(k !== name && k !== IMG_C && k.indexOf('geo-') === 0) await caches.delete(k);
   return imgs(name, true, ib);
+}
+// T282: ניווט לדף הראשי ⇒ [תשובה, עבודת רקע]. אותה גרסה / אין רשת ⇒ מטמון; גרסה חדשה ⇒ הרשת זורמת לדף ובמקביל נשמרת (אחרי sha256).
+async function nav(q){
+  let n = null, m = null;   // המעטפת השלמה האחרונה (מטמון שנבנה עכשיו ועוד בלי index.html — מדלגים עליו לקודמת)
+  try{ for(const k of (await caches.keys()).filter(k => k.indexOf(SHELL_P) === 0).sort().reverse()){ m = await (await caches.open(k)).match(IDX); if(m){ n = k; break; } } }catch(err){}
+  if(!m) return [await fetch(q), check()];   // ביקור ראשון / אין מעטפת — כמו קודם
+  const sp = stamp().catch(() => null), st = await Promise.race([sp, new Promise(r => setTimeout(() => r(0), STAMP_MS))]);
+  if(st === 0) return [m, sp.then(s => s && check(s))];   // רשת איטית: המטמון עכשיו, אותה חותמת ממשיכה ברקע (פתיחה הבאה) — בלי בקשה שנייה
+  if(!st || nameOf(st) === n) return [m, st ? check(st) : Promise.resolve()];   // אין רשת / אותה גרסה ⇒ מטמון, בלי הורדת index
+  let x = null; try{ x = await fetch(IDX, {cache: 'no-store'}); }catch(err){}
+  if(!x || !x.ok) return [m, check(st)];
+  // סבב 2 (סוקר APP): לא מזרימים ישר לדף — הורדה שנקטעה באמצע נתנה דף לבן. מחכים לגוף השלם עד INDEX_MS ומאמתים sha256 מול החותמת;
+  // איטי ⇒ המטמון עכשיו, וההורדה הזו ממשיכה ברקע ונשמרת (הפתיחה הבאה = החדשה, בלי הורדה שנייה) · נקטע / sha לא תואם ⇒ המטמון.
+  const bp = x.arrayBuffer(), ib = await Promise.race([bp.catch(() => null), new Promise(r => setTimeout(() => r(0), INDEX_MS))]);
+  if(ib === 0) return [m, bp.then(b => check(st, b)).catch(() => {})];
+  if(!ib || await hex(ib) !== st.index_sha256) return [m, Promise.resolve()];
+  // תשובה חדשה (לא x עצמו): כתובת אחרי הפניה (Cloudflare /index.html ⇒ /) אסורה בתשובה לניווט
+  return [new Response(ib, {headers: {'Content-Type': 'text/html; charset=utf-8'}}), check(st, ib)];
 }
 async function imgs(name, prune, ib){
   if(!ib){ const m = await (await caches.open(name)).match(IDX); if(!m) return; ib = await m.arrayBuffer(); }
@@ -56,9 +82,9 @@ self.addEventListener('fetch', e => {
       return x; }))).catch(() => fetch(q)));
     return;
   }
-  if(q.mode === 'navigate' && (path === '' || path === 'index.html')){
-    e.respondWith(shellName().then(n => n ? caches.open(n).then(c => c.match(IDX)) : null).then(m => m || fetch(q)).catch(() => fetch(q)));
-    e.waitUntil(check());
+  if(q.mode === 'navigate' && (path === '' || path === 'index.html')){   // T282: החותמת קודם, ואז מטמון או רשת — nav()
+    let fin; e.waitUntil(new Promise(r => { fin = r; }));
+    e.respondWith(nav(q).then(([res, bg]) => { fin(bg); return res; }, err => { fin(); throw err; }));
     return;
   }
   if(rel === path && SHELL.indexOf(path) >= 0){
