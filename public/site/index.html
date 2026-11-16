@@ -2231,6 +2231,18 @@ html.stg-lock{overflow:hidden}
 .hm-ed1 .go{flex:none; font-size:20px; color:var(--ink-3); font-style:normal}
 .hm-ed1:active{background:var(--press, rgba(255,255,255,.06))}
 @media (max-width:370px){ .hm-ed1 .n{font-size:15px} .hm-ed1 small{font-size:12.5px} }
+/* s101 FRESH · D446 B («ניישם את B … בעיצוב של פס המהדורה היומית»): פס «חדש במהדורה» בתוך כרטיס המהדורה הקיים (.c-ed.c-ed1), מתחת לאותה שורה (.hm-ed1).
+   אותם טוקנים של הכרטיס: --rule לקו המפריד (כמו .c-ed .ft), --card2 לממוזערת בלי תמונה, --font-ui, --ink/--ink-3, גלילה אופקית כמו .hm-strip. רק ערכי R-ds (14/12px · 400/700 · מרווחים 0/4/8/12/16). */
+.edn-s{display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:12px 16px 16px; border-top:1px solid var(--rule); scrollbar-width:none}
+.edn-s::-webkit-scrollbar{display:none}
+.edn-t{scroll-snap-align:start; flex:none; width:144px; min-height:44px; display:flex; flex-direction:column; gap:4px; padding:0; margin:0; background:none; border:0; text-align:start; cursor:pointer; font-family:var(--font-ui); color:var(--ink)}
+.edn-ph{display:block; width:144px; height:88px; border-radius:8px; overflow:hidden; background:var(--card2)}
+.edn-ph img{display:block; width:100%; height:100%; object-fit:cover}
+.edn-tt{display:block; font:700 14px/1.3 var(--font-ui); max-height:calc(1.3em * 3); overflow:hidden; margin-top:4px}
+.edn-t small{display:block; font:400 12px/1.3 var(--font-ui); color:var(--ink-3)}
+.edn-t:active .edn-ph{opacity:.8}
+/* D446 C2: «N חדשים» על «אירועים» בסרגל — עיגול קטן על האייקון (צבעי «חדש» של הבית: --hot/--on-new; הסרגל מחוץ ל-.hm ⇒ אותם ערכים ישירות) */
+.tabbar .tbn-c{position:absolute; top:4px; inset-inline-start:calc(50% + 4px); min-width:16px; height:16px; padding:0 4px; border-radius:8px; background:#ffd60a; color:#141009; font:700 12px/16px var(--font-ui); text-align:center; pointer-events:none}
 /* s101 HOME7C · D412/D413 — «7 הגדולים שעוד לא ראית»: כרטיס כניסה מתחת למהדורה, «בצבע קצת אחר וריבוע קצת יותר עבה עם איזה תמונה» (הבעלים, D413).
    מהפלטה הקיימת: רקע --card2, מסגרת --gold; גבוה מכרטיס המהדורה. שתי חלופות (home.js HM7_CARD): bg = תמונת האירוע הראשון כרקע מוכהה · thumb = ממוזערת בצד. */
 .c-ed.hm-g7{position:relative; margin:10px var(--g) 0; background:var(--card2); border:1.5px solid var(--gold)}
@@ -4563,11 +4575,11 @@ html.ug-lock, html.ug-lock body{overflow:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.aa7752a7e572.js"></script>
+<script src="d/0.43e98de9dfcd.js"></script>
 <script src="d/1.b964a9c141f9.js"></script>
 <script src="d/2.f79d8822bf82.js"></script>
 <script src="d/3.d561912297e4.js"></script>
-<script>/*geo-site-split/2 n=4 len=16479187 sha=3e9fd6e564b7ac547f5147015abdb734b58a55ac12208bc6e11b8ae4cfad3dd7*/(function(){var H=["aa7752a7e572", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16479187 sha=9c29289c3a421ac88aa37d9adc8626095471445616a4f3df8769303bf013ea7f*/(function(){var H=["43e98de9dfcd", "b964a9c141f9", "f79d8822bf82", "d561912297e4"],L=[4119797, 4119797, 4119797, 4119796],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -9243,6 +9255,27 @@ const E4LED = (()=>{ const m = E4.reduce((m,e)=>(e.kind==='sig' && e.ed && e.ed>
 function e4IsLatest(e){ return !!(e && E4LED && e.kind==='sig' && e.ed===E4LED); }
 function e4WkSort(a,b){ const la = e4IsLatest(a), lb = e4IsLatest(b);
   return ((lb?1:0)-(la?1:0)) || ((la && lb) ? ((b.sig+(b.boost||0))-(a.sig+(a.boost||0))) : 0) || (e4Live(b)-e4Live(a)) || (a.date<b.date?1:a.date>b.date?-1:0); }
+/* s101 FRESH · D446 (הבעלים: «בוא נעשה את c וניישם את B») — «חדש» אחד לכל הבית, מנתוני הבנאי בלבד (EV4.editions + e.date + הציון המוצג), בלי שכבת המשתמשים:
+   e4FreshDate(e) = המאוחר מבין תאריך האירוע לבין תאריך המהדורה הראשונה שבה הוא מופיע (אירוע שנקלט באיחור למהדורה פתוחה, D420 — נספר מיום הקליטה).
+   e4Fresh(e) = «חדש של 48 השעות»: גיל e4FreshDate 0–1 ימים לפי היום של הבית (e4Today) · הציון המוצג ≥ הסף (EV4.rules.threshold, היום 5) · לא «דיבור» בצומת חשוד (D199).
+   E4FRESH.slots = כמה משבצות ראשונות מקבל החדש ב«7 הגדולים» וב«האירועים השבועיים» (hmFreshFirst ב-home.js). מיון בלבד — שום ציון ושום טקסט לא משתנים. */
+const E4FRESH = {days:1, slots:3};
+function e4FreshSlots(){ return E4FRESH.slots; }   /* לבודקים שמריצים את הבנייה ב-eval (const לא נראה מחוץ לו) */
+const E4EDFIRST = (()=>{ const m = {}; ((EV4 && EV4.editions) || []).slice().sort((a,b)=>a.date<b.date ? -1 : a.date>b.date ? 1 : 0).forEach(ed=>(ed.rows||[]).forEach(r=>{ if(r && r.ev && !m[r.ev]) m[r.ev] = ed.date; })); return m; })();
+function e4FreshDate(e){ if(!e) return ''; const d = E4EDFIRST[e.key] || ''; return (d && d>(e.date||'')) ? d : (e.date||''); }
+function e4Fresh(e){ if(!e || e4IsTalk(e)) return false; const a = e4Days(e4FreshDate(e)); return a>=0 && a<=E4FRESH.days && (+score_display(e)||0) >= (E4R.threshold||5); }
+/* «N חדשים» על לשונית «אירועים» (D446 C2): אירועי המהדורה האחרונה (EV4.editions — הבנאי) שעוד לא נפתחו/נקראו במכשיר הזה (e4Done: נפתח, שהייה ≥10 שנ׳ או «נקרא»; localStorage).
+   לא «נראה מאז הביקור» (visitPoint) — זה מתאפס בכל ביקור ולא יורד כשקוראים; ולא שכבת המשתמשים (כבויה). אותה הגדרה כמו הפס «חדש במהדורה» בבית (home.js hmEdNew). */
+function e4EdLatest(){ return ((EV4 && EV4.editions) || []).slice().sort((a,b)=>a.date<b.date ? 1 : a.date>b.date ? -1 : 0)[0] || null; }
+function e4EdNew(){ const ed = e4EdLatest(), seen = {}, L = []; if(!ed) return L;
+  const rs = r=>typeof seenHas==='function' && [r.id].concat(r.also||[]).some(seenHas);   /* שורת המהדורה כבר נראתה (D86/D87, אותו כלל של hmEdDone לפריט) ⇒ לא «חדש» */
+  (ed.rows||[]).forEach(r=>{ const e = (r && r.ev && typeof e4Key==='function') ? e4Key(r.ev) : null; if(!e || seen[e.key] || e4IsTalk(e) || e4Done(e) || rs(r)) return; seen[e.key] = 1; L.push(e); }); return L; }
+function e4TabBadge(){ if(typeof document==='undefined' || !document.getElementById) return; const b = document.getElementById('nav-events'); if(!b || typeof b.querySelector!=='function' || typeof document.createElement!=='function') return;   /* בודקי node (qa_mobile) — DOM מדומה */
+  const n = e4EdNew().length; let s = b.querySelector('.tbn-c');
+  if(!n){ if(s) s.remove(); b.removeAttribute('data-tbn'); return; }
+  if(!s){ s = document.createElement('b'); s.className = 'tbn-c'; b.appendChild(s); }
+  s.textContent = String(n); s.setAttribute('aria-label', n===1 ? 'אירוע חדש אחד שעוד לא קראת' : n+' אירועים חדשים שעוד לא קראת'); b.setAttribute('data-tbn', String(n)); }
+if(typeof window!=='undefined' && window.addEventListener) window.addEventListener('storage', ev=>{ if(ev && /^geo\.(read|dwell)/.test(ev.key||'')) try{ e4TabBadge(); }catch(x){} });
 /* D141·F30 · רקע ברירת מחדל לטריטוריה (EV4.terr_bg, מוטמע בבנייה מספריית הרילסים) — רק כשלאירוע אין תמונה משלו */
 const E4TBG = (EV4 && EV4.terr_bg) || {};
 function e4TBg(e){ const t = E4TBG[(e && e.terr)] || E4TBG['אחר']; return t || null; }
@@ -11177,9 +11210,15 @@ function hmEdDone(){
 function hmEdition(M){
   if(hmEdDone()) return '';
   const N = M.edItems.length, nu = M.edUnseen || 0, today = !(M.edAge>=1);
-  const sub = nu ? nu+(nu===1 ? ' חדש' : ' חדשים') : N+(N===1 ? ' פריט' : ' פריטים');
+  /* s101 FRESH · D446 B («ניישם את B … בעיצוב של פס המהדורה היומית»): כשיש באירועי המהדורה האחרונה כאלה שעוד לא נקראו במכשיר (ev4.js e4EdNew — אותה הגדרה כמו המספר על «אירועים»)
+     — מתחת לאותה שורת מהדורה בדיוק, פס אופקי של האירועים האלה (ממוזערת + כותרת + תאריך), בסדר המהדורה. הקשה על פריט ⇒ האירוע; על השורה ⇒ המהדורה.
+     אין חדשים ⇒ השורה הרגילה כמו קודם. המספר בשורה = מספר הפריטים בפס (מנתוני הבנאי + מצב «נקרא» במכשיר). */
+  const L = (typeof e4EdNew==='function' && typeof EV4!=='undefined' && EV4) ? e4EdNew() : [];
+  const sub = L.length ? L.length+(L.length===1 ? ' חדש' : ' חדשים') : nu ? nu+(nu===1 ? ' חדש' : ' חדשים') : N+(N===1 ? ' פריט' : ' פריטים');
+  const tile = e=>{ const im = (typeof e4Img==='function') ? e4Img(e) : ''; return '<button type="button" class="edn-t" role="listitem" data-e4open="'+escH(e.key)+'">'+
+    '<span class="edn-ph'+(im ? '' : ' noimg')+'" aria-hidden="true">'+(im ? '<img alt="" loading="lazy" src="'+im+'">' : '')+'</span><span class="edn-tt">'+e4Bdi(e4T(e))+'</span><small>'+e4Dl(e.date)+'</small></button>'; };
   return '<section class="c-ed c-ed1" id="hm-edition" aria-label="מהדורת הרענון היומי"><button type="button" class="hm-ed1'+(nu ? ' has-new' : '')+'" data-hed="'+M.b0.date+'"><span class="n">מהדורת '+sgDmy(M.b0.date)+' · רענון יומי</span>'+
-    '<small>'+escH(sub)+'</small><i class="go" aria-hidden="true">‹</i></button></section>';
+    '<small>'+escH(sub)+'</small><i class="go" aria-hidden="true">‹</i></button>'+(L.length ? '<div class="edn-s" role="list" aria-label="חדש במהדורה">'+L.map(tile).join('')+'</div>' : '')+'</section>';
 }
 /* ---------- s101 · D407 «7 הכי גדולים שעוד לא ראית» — מתחת למהדורה היומית ----------
    הבעלים (D407): «שבע האירועים בעלי הציון הכי גבוהה מהשבוע האחרון שהמשתמש עוד לא ראה … וגם כדי לייצר חוסר חזרתיות של אירועים».
@@ -11195,7 +11234,16 @@ function hm7Pick(E, o){
   const cmp = (a, b)=>(sc(b)-sc(a)) || (a.date<b.date ? 1 : a.date>b.date ? -1 : 0) || (a.key<b.key ? -1 : a.key>b.key ? 1 : 0);
   const ok = (E||[]).filter(e=>e && age(e)>=0 && !ed[e.key] && !talk(e) && !seen.has(e));
   /* D418: קודם 7 הימים האחרונים; כשנגמרים — ממשיכים אחורה לישנים יותר, לפי אותו ציון (חי, מתחשב בגיל) — כך תמיד 7 כל עוד יש מה שלא נקרא */
-  return ok.filter(e=>age(e)<days).sort(cmp).concat(ok.filter(e=>age(e)>=days).sort(cmp)).slice(0, n);
+  const L = ok.filter(e=>age(e)<days).sort(cmp).concat(ok.filter(e=>age(e)>=days).sort(cmp));
+  return hmFreshFirst(L, o.fresh, o.nf).slice(0, n);   /* D446 C: עד nf משבצות ראשונות לחדש (o.fresh); בלי o.fresh ⇒ בדיוק הסדר של D418 */
+}
+/* s101 FRESH · D446 C («בוא נעשה את c»): עדיפות לחידוש במיון — כלל אחד לשני המקומות («7 הגדולים» ו«האירועים השבועיים»).
+   L כבר ממוין בסדר הרגיל של המקום. עד nf הראשונים ב-L שעונים ל-fresh (ev4.js e4Fresh: נכנס ב-48 השעות האחרונות ועובר את סף הציון) עולים לראש,
+   באותו סדר יחסי שהיה להם; כל השאר — בסדר הקודם. טהור ודטרמיניסטי (נבדק: tools/check_home7.py, tools/check_fresh.py). */
+function hmFreshFirst(L, fresh, nf){
+  L = L || []; nf = nf|0; if(typeof fresh!=='function' || nf<=0) return L.slice();
+  const F = [], R = []; L.forEach(e=>{ if(F.length<nf && fresh(e)) F.push(e); else R.push(e); });
+  return F.concat(R);
 }
 /* s101 HOME7C · D412/D413: «7 הגדולים שעוד לא ראית» = כרטיס כניסה מתחת לכרטיס «מהדורה יומית» (לא רשימה בבית), שפותח דף במבנה המהדורה
    (ev4.js renderTop7). הדף לא מציג את אירועי השער ואת אירועי המהדורה של היום (הכרעת מנהל לפי D407 «חוסר חזרתיות»); שאר מקטעי הבית לא משתנים.
@@ -11206,7 +11254,7 @@ const HM7_TITLE = '7 הגדולים שעוד לא ראית';
 function hm7List(){
   if(typeof EV4==='undefined' || !EV4 || typeof E4==='undefined') return null;
   /* D418 (הבעלים: «ה7 הגדולים הם ה7 שעוד לא קראת»): 7 האירועים שלא נקראו עם הציון החי הגבוה ביותר — גם אם אחד מהם בשער או במהדורה (ההחרגה בוטלה, הכרעת מנהל) */
-  return hm7Pick(E4, {age:e=>e4Days(e.date), seen:hm7SeenStore(), ed:{}, talk:e=>(typeof e4IsTalk==='function') && e4IsTalk(e), score:e=>(typeof e4Live==='function') ? e4Live(e) : (+score_display(e)||0)});   /* D418: «הציון הכי גבוה (בהתחשב התאריך)» = הציון החי e4Live (ציון × דעיכה לפי גיל) */
+  return hm7Pick(E4, {age:e=>e4Days(e.date), seen:hm7SeenStore(), ed:{}, talk:e=>(typeof e4IsTalk==='function') && e4IsTalk(e), score:e=>(typeof e4Live==='function') ? e4Live(e) : (+score_display(e)||0), fresh:(typeof e4Fresh==='function') ? e4Fresh : null, nf:(typeof E4FRESH!=='undefined') ? E4FRESH.slots : 0});   /* D418: «הציון הכי גבוה (בהתחשב התאריך)» = הציון החי e4Live (ציון × דעיכה לפי גיל) */
 }
 function hm7Inner(){
   const L = hm7List(); if(!L) return '';
@@ -11219,7 +11267,9 @@ function hm7Inner(){
 function hm7Block(){ const h = hm7Inner(); return h ? '<section class="c-ed hm-g7 hm-g7-'+HM7_CARD+'" id="hm-top7" aria-label="'+HM7_TITLE+'">'+h+'</section>' : ''; }
 /* מתעדכן: כשהעמקה נסגרת (אירוע שנקרא יוצא, הבא בתור נכנס) ובשינוי «נקרא» מלשונית אחרת */
 function hm7Refresh(){ if(typeof document==='undefined' || !document.getElementById) return; const el = document.getElementById('hm-top7'); if(el){ const h = hm7Inner(); if(h) el.innerHTML = h; else el.remove(); }
-  const ed = document.getElementById('hm-edition'); if(ed && hmEdDone()) ed.remove(); }   /* D418: המהדורה שנקראה כולה יורדת מיד */
+  const ed = document.getElementById('hm-edition'); if(ed && hmEdDone()) ed.remove();
+  else if(ed && HM_M && ed.outerHTML !== undefined){ const h = hmEdition(HM_M); if(h) ed.outerHTML = h; }   /* D446 B: אירוע שנקרא יוצא מהפס; אחרון ⇒ השורה הרגילה */
+  if(typeof e4TabBadge==='function') try{ e4TabBadge(); }catch(e){} }   /* D418: המהדורה שנקראה כולה יורדת מיד */
 function hm7Hook(){
   if(typeof e4CloseDeep==='function' && !e4CloseDeep._hm7){ const f0 = e4CloseDeep; e4CloseDeep = function(){ const r = f0.apply(this, arguments); try{ hm7Refresh(); }catch(x){} return r; }; e4CloseDeep._hm7 = 1; }
 }
@@ -11519,9 +11569,10 @@ function renderHome(){
   const M = HM_M = hmModel();
   /* v75 · D271: סדר הבית — שער (7) ⇒ מספרים ⇒ מהדורת הרענון ⇒ «מה חדש בצמתים» ⇒ הצמתים החיים (עלו מתחת לכרטיס הרענון) ⇒ האירועים השבועיים ⇒ רילסים. ההימורים מוקפאים (D247): בלוק ההימור והמעקב לא מוצגים כש-hubs.js פעיל. */
   const V75 = (typeof hbOn==='function' && hbOn()), EVON = (typeof EV4!=='undefined' && EV4);
-  pgShow('<div class="hm" id="hm">'+hmCover(M)+/* D412/D413: שורת 4 המספרים הלבנים מתחת לשער ירדה (כל יעד שלה נגיש בגלילה/בלשונית) · D417: «7 הגדולים» מעל המהדורה */(EVON ? hm7Block() : '')+hmEdition(M)+(EVON ? (V75 ? hmNewHubs(M) : '')+hmHubBlock(M)+hmWeekly() : hmSignals(M))+hmReels(M)+
+  pgShow('<div class="hm" id="hm">'+hmCover(M)+/* D412/D413: שורת 4 המספרים הלבנים מתחת לשער ירדה (כל יעד שלה נגיש בגלילה/בלשונית) · D417: «7 הגדולים» מעל המהדורה */hmEdition(M)+(EVON ? hm7Block() : '')+/* D446 B: המהדורה (עם הפס) מיד מתחת לשער, לפני «7 הגדולים» — מחליף את הסדר של D417 */(EVON ? (V75 ? hmNewHubs(M) : '')+hmHubBlock(M)+hmWeekly() : hmSignals(M))+hmReels(M)+
     (V75 ? '' : '<section class="hm-bets" id="hm-bets" aria-labelledby="hm-bets-h">'+hmBetsInner(M)+'</section>')+hmDeepHand(M)+hmIosCard()+'</div>');
   hmWire();
+  if(typeof e4TabBadge==='function') try{ e4TabBadge(); }catch(e){}   /* D446 C2 */
   if(typeof EV4!=='undefined' && EV4 && typeof e4NewClock==='function') e4NewClock();
   if(typeof setTimeout==='function') setTimeout(()=>{ try{ onbMaybe(); }catch(e){} }, 900);   /* D138·4 */
 }
@@ -12694,8 +12745,10 @@ function hotHTML(){
 }
 fns.push(()=>{
   if(document.getElementById('d5-hot')) return;
-  const ed = document.getElementById('hm-edition'); if(!ed) return;
-  const h = hotHTML(); if(h) ed.insertAdjacentHTML('afterend', h);
+  /* s101 FRESH · D446: «הצמתים החמים» רק כשיש כרטיס מהדורה, ואחרי האחרון מבינו לבין «7 הגדולים» (D446 העביר את המהדורה מעל «7»; כך הסדר שאחריהם לא משתנה) */
+  const ed = document.getElementById('hm-edition'), t7 = document.getElementById('hm-top7'); if(!ed) return;   /* המהדורה נקראה כולה (D418) ⇒ בלי «הצמתים החמים», כמו קודם */
+  const an = (t7 && (ed.compareDocumentPosition(t7) & 4)) ? t7 : ed;
+  const h = hotHTML(); if(h) an.insertAdjacentHTML('afterend', h);
 });
 document.addEventListener('click', e=>{ const b = e.target.closest && e.target.closest('[data-d5quiet]'); if(!b) return; e.preventDefault();
   const a = b.getAttribute('data-d5quiet'); setTab('hubs');
@@ -12990,8 +13043,10 @@ hmHeadsX = function(){
 function unitRest(){
   const cv = {}; ((typeof hmHeads==='function') ? hmHeads() : unitCover()).forEach(e=>{ cv[e.key] = 1; if(e.item_id) cv['i:'+e.item_id] = 1; });
   const seen = {};
-  return E4.filter(e=>{ if(talk(e) || days(e)<0 || days(e)>7 || cv[e.key] || (e.item_id && cv['i:'+e.item_id])) return false;
+  const L = E4.filter(e=>{ if(talk(e) || days(e)<0 || days(e)>7 || cv[e.key] || (e.item_id && cv['i:'+e.item_id])) return false;
     const k = e.item_id ? 'i:'+e.item_id : e.key; if(seen[k]) return false; seen[k] = 1; return true; }).sort(byScore);
+  /* s101 FRESH · D446 C: אותו כלל של «7 הגדולים» (home.js hmFreshFirst + ev4.js e4Fresh) — עד E4FRESH.slots חדשים של 48 השעות שעוברים את הסף בראש */
+  return (typeof hmFreshFirst==='function' && typeof e4Fresh==='function' && typeof E4FRESH!=='undefined') ? hmFreshFirst(L, e4Fresh, E4FRESH.slots) : L;
 }
 window.unitRest = unitRest;
 e4HomeWeeklyX = function(){
@@ -13522,6 +13577,7 @@ function drCount(t){
 /* הסרגל: כפתור לכל לשונית 'now', עם aria-current="page" על הפעילה. במחשב (≥1024) — טור ניווט ימני (CSS). */
 document.getElementById('tabbar').innerHTML = TABS.filter(t=>t[4]==='now').sort((a,b)=>V75_BAR ? V75_ORDER.indexOf(a[0]) - V75_ORDER.indexOf(b[0]) : 0).map(t=>
   '<button type="button" id="nav-'+t[0]+'" data-tab="'+t[0]+'"'+(V75_BAR && t[0]==='events' ? ' class="tb-main"' : '')+' onclick="navTab(\''+t[0]+'\')">'+t[1]+'<span>'+t[2]+'</span></button>').join('');
+if(typeof e4TabBadge==='function') try{ e4TabBadge(); }catch(e){}   /* s101 FRESH · D446 C2: «N חדשים» על «אירועים» (ev4.js) */
 /* D128: הקשה על «רילס» בסרגל תמיד פותחת את פיד הסרטונים בעיצוב החדש (עם פס הנושאים) — לא את כרטיסי הפריטים הישנים, גם אם נפתחו קודם */
 function navTab(t){
   if(t==='events' && typeof e4ChipReset==='function'){ e4ChipReset(); if(typeof E4CUR!=='undefined') E4CUR = null; }   /* D138·3: הסרגל ⇒ «אירועים» בלי סינון (כמו D128 ברילס) */
