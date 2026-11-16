@@ -4076,15 +4076,6 @@ html:has(#mx-sheet.open) #nav-back{display:none}
    רק מחלקות emh-* חדשות + טוקנים קיימים (--ax של ציר, --ink/--ink-2/--ink-3/--rule/--surface/--paper/--action/--press/--font-ui/--font-read) — בהיר/כהה לפי data-theme.
    ההבדל מצומת חי: בלי תמונת שער; ראש בתוך מסגרת מקווקוות בגוון הציר; תג «📡 צומת בהתהוות» מקווקו; סרגל בשלות. טקסט — תמיד בדיו (לא בגוון הציר), בשביל ניגודיות. */
 .emh-sheet .top{border-bottom-style:dashed}
-.emh .emh-hd{margin:16px 0 0; padding:16px 16px 14px; border:2px dashed color-mix(in srgb, var(--ax, var(--ink-3)) 75%, transparent); border-radius:16px; background:color-mix(in srgb, var(--ax, var(--ink-3)) 8%, var(--paper))}
-.emh-tag{display:inline-flex; align-items:center; gap:6px; min-height:30px; padding:3px 12px; border:1.5px dashed var(--ax, var(--ink-3)); border-radius:999px; font:800 13.5px/1.2 var(--font-ui); color:var(--ink); background:var(--paper)}
-.emh-tag i{font-style:normal}
-.emh-ax{display:inline-block; margin-inline-start:8px; font:600 13px/1.2 var(--font-ui); color:var(--ink-2)}
-.emh .emh-hd h1{margin:12px 0 10px; font:800 25px/1.25 var(--font-ui); color:var(--ink); text-wrap:balance}
-.emh-q{margin:0 0 10px; padding:2px 0; padding-inline-start:12px; border-inline-start:4px dashed var(--ax, var(--ink-3))}
-.emh-q small{display:block; margin:0 0 3px; font:800 12px/1.3 var(--font-ui); letter-spacing:.03em; color:var(--ink-3)}
-.emh .emh-q p{margin:0; font:700 18px/1.45 var(--font-read); color:var(--ink)}
-.emh p.emh-lede{margin:0 0 12px; font:500 14px/1.5 var(--font-ui); color:var(--ink-2)}
 .emh-meter{padding:10px 12px 8px; border-radius:12px; background:var(--paper); border:1px solid var(--rule)}
 .emh p.emh-mh{display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin:0 0 6px; font:500 12.5px/1.3 var(--font-ui); color:var(--ink-3)}
 .emh p.emh-mh b{font:800 14.5px/1.3 var(--font-ui); color:var(--ink)}
@@ -4113,13 +4104,6 @@ html:has(#mx-sheet.open) #nav-back{display:none}
 .emh-ev .m{font:500 12.5px/1.4 var(--font-ui); color:var(--ink-3)}
 .emh-ev .k{font:700 12.5px/1.4 var(--font-ui); color:var(--action)}
 button.emh-ev{cursor:pointer}
-.emh-sp{margin:6px 0 0; padding:10px 12px; border:1.5px dashed var(--rule); border-radius:12px}
-.emh-sp small{display:block; margin:0 0 4px; font:800 12px/1.3 var(--font-ui); color:var(--ink-3)}
-.emh-sp ul{list-style:none; margin:0; padding:0}
-.emh-sp li{padding:6px 0; border-top:1px solid var(--rule)}
-.emh-sp li:first-child{border-top:0}
-.emh-sp .d{display:block; font:700 12.5px/1.3 var(--font-ui); color:var(--ink-3)}
-.emh .emh-sp p{margin:2px 0 0; font:400 15.5px/1.55 var(--font-read)}
 /* הבית: שורת «בהתהוות» שיש לה עמוד — כפתור באותו מראה של d5-emv, עם חץ */
 button.d5-emv.emh-go{position:relative; width:100%; text-align:start; cursor:pointer; padding-inline-end:28px; background:none; border:0; border-bottom:1px solid var(--rule); border-radius:0}
 button.d5-emv.emh-go .emh-arr{position:absolute; inset-inline-end:4px; top:50%; transform:translateY(-50%); font:700 18px/1 var(--font-ui); font-style:normal; color:var(--ink-3)}
@@ -4130,8 +4114,6 @@ button.d5-emv.emh-go:focus-visible{outline:2px solid var(--action); outline-offs
 .emh-sheet{--rad-a:#e0a526; --rad-b:#4a90c8}
 [data-theme="light"] .emh-sheet{--rad-a:#b07508; --rad-b:#2f6fa3}
 .emh-sheet .top{border-bottom:2px dashed var(--rad-a)}
-.emh .emx-hd{position:relative; border:2px dashed color-mix(in srgb, var(--rad-a) 80%, transparent); background:color-mix(in srgb, var(--rad-b) 7%, var(--paper)); overflow:hidden; padding-top:20px}
-.emx-hd::before{content:""; position:absolute; inset-inline:0; top:0; height:6px; background:repeating-linear-gradient(90deg, var(--rad-a) 0 18px, var(--rad-b) 18px 36px)}
 .emx-stamp{display:inline-flex; align-items:center; gap:6px; min-height:30px; padding:3px 12px; border:1.5px dashed var(--rad-a); border-radius:999px; font:800 13.5px/1.2 var(--font-ui); color:var(--ink); background:var(--paper)}
 .emx-stamp i{font-style:normal}
 /* מד בשלות לחיץ */
@@ -4148,7 +4130,6 @@ button.d5-emv.emh-go:focus-visible{outline:2px solid var(--action); outline-offs
 .emh p.emx-tip{margin:4px 0 0; font:500 12px/1.3 var(--font-ui); color:var(--ink-3)}
 /* כותרות בלוקים ממוספרות */
 .emx-sec h2{display:flex; align-items:baseline; gap:8px}
-.emx-n{flex:none; display:inline-grid; place-items:center; width:24px; height:24px; border-radius:50%; border:1.5px dashed var(--rad-a); font:800 13px/1 var(--font-ui); color:var(--ink)}
 .emh p.emx-sn{margin:0 0 10px; font:500 13.5px/1.5 var(--font-ui); color:var(--ink-2)}
 /* ציר זמן אנכי */
 .emx-tl{list-style:none; margin:0; padding:0; position:relative}
@@ -4169,7 +4150,6 @@ button.d5-emv.emh-go:focus-visible{outline:2px solid var(--action); outline-offs
 .emx-sps{list-style:none; margin:4px 0 14px; padding:0; display:grid; gap:10px}
 .emx-sp{padding:10px 12px; border:1.5px dashed var(--rad-a); border-radius:14px; background:var(--paper)}
 .emx-sp-h{display:flex; justify-content:space-between; gap:8px; font:800 12.5px/1.4 var(--font-ui); color:var(--ink-2)}
-.emx-cnt{color:var(--ink)}
 .emh p.emx-sp-w{margin:4px 0 8px; font:500 15px/1.5 var(--font-read); color:var(--ink)}
 .emx-sp-w b{font:800 13.5px/1.5 var(--font-ui)}
 .emx-sp-w small{color:var(--ink-3); font:500 12.5px var(--font-ui)}
@@ -4187,7 +4167,6 @@ button.d5-emv.emh-go:focus-visible{outline:2px solid var(--action); outline-offs
 .emx-sec.emy-sec{padding-top:0; padding-bottom:0}
 .emx-sec h2.emy-h2{display:block; margin:0}
 .emy-hd{display:flex; align-items:flex-start; gap:10px; width:100%; min-height:48px; padding:12px 0; border:0; background:none; color:var(--ink); text-align:start; cursor:pointer; font:inherit}
-.emy-hd .emx-n{margin-top:1px}
 .emy-tt{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px}
 .emy-t{font:800 17px/1.35 var(--font-ui); color:var(--ink); text-wrap:balance}
 .emy-meta{font:700 12.5px/1.35 var(--font-ui); color:var(--ink-2)}
@@ -4532,11 +4511,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.e81c15b13d9c.js"></script>
-<script src="d/1.f0ce3201a8b4.js"></script>
-<script src="d/2.cb887d78258c.js"></script>
-<script src="d/3.a3727a304fe0.js"></script>
-<script>/*geo-site-split/2 n=4 len=16349488 sha=4bca8b55f6e584a8cdfdbeadc8c361d6e0162dd6dfb7f6f11e34b6b0b320afee*/(function(){var H=["e81c15b13d9c", "f0ce3201a8b4", "cb887d78258c", "a3727a304fe0"],L=[4087372, 4087372, 4087372, 4087372],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script src="d/0.892c331b17a0.js"></script>
+<script src="d/1.5f5f0f13f8e3.js"></script>
+<script src="d/2.7e43d6a7a67e.js"></script>
+<script src="d/3.9a8b4f31b149.js"></script>
+<script>/*geo-site-split/2 n=4 len=16381154 sha=fc9f9b23d83ec28d1b7505a389298548b2de58675a1c10899b8c6d84f63d892b*/(function(){var H=["892c331b17a0", "5f5f0f13f8e3", "7e43d6a7a67e", "9a8b4f31b149"],L=[4095289, 4095289, 4095289, 4095287],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
