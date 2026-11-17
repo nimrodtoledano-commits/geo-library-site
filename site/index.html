@@ -1872,6 +1872,8 @@ body.in-sig .nav-back{display:none}   /* D72: הצף כיסה את «קראו א
 .rv-next button img, .rv-next button i{flex:none; width:40px; height:40px; border-radius:8px; object-fit:cover; background:rgba(255,255,255,.14)}
 .rv-next button b{flex:1 1 auto; font-weight:700; overflow:hidden; max-height:2.5em}
 .rv-next button em{flex:none; font-style:normal; font-size:12px; color:rgba(255,255,255,.7)}
+/* s101 SIGEV c4 (הכרעת מנהל r9, D460 ס׳2): שער של סיגנל-מאירוע בלי קלפי הערכה — התוכן ממורכז אנכית במקום חלל ריק מתחתיו */
+.cover[data-noed]{justify-content:center}
 
 /* =====================================================================================
    D70 · עמוד הבית — «פתיחת מגזין» (home_mockup_D68 «אחרי»), עם «ההימור הקרוב» מוקטן (~40%).
@@ -4523,11 +4525,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.72059e7c7113.js"></script>
+<script src="d/0.8590f3151174.js"></script>
 <script src="d/1.e4e95aae6d84.js"></script>
 <script src="d/2.3f374418dcd2.js"></script>
 <script src="d/3.a441deee4061.js"></script>
-<script>/*geo-site-split/2 n=4 len=16564097 sha=43654cc60a857c07d4c5a1b8ab8eae9b9cdfdfa557b1d466c9de04898df69f36*/(function(){var H=["72059e7c7113", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16564097 sha=52430e1c5735d1e876fc3d5287057dc7fd2fb04d2b229f7330c50b4f6180d3b0*/(function(){var H=["8590f3151174", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -5117,6 +5119,7 @@ function evOpHTML(i){
   return '<p class="m-op"><span class="op-tag">דעה:</span> '+(op.who ? escH(op.who)+': ' : '')+bdiT(escH(op.text))+'</p>';
 }
 function sigLinkHTML(i, cls){
+  if(typeof SG!=='undefined' && SG && SG.src==='ev') return '';   /* s101 SIGEV ב׳ (D453): המסך מהאירועים — מספרי הסיגנל הישנים בפריטים (it.sigs) כבר לא מצביעים עליו */
   const ns = (i.sigs||[]).filter(n=>typeof SG!=='undefined' && SG && sgSigIdx(n)>=0);
   if(!ns.length) return '';
   return '<p class="'+(cls||'ev-sig')+'">'+ns.map(n=>'<button type="button" class="sig-go" data-sig-go="'+n+'" onclick="goSignal('+n+')">מתחבר לסיגנל '+n+' ←</button>').join(' ')+'</p>';
@@ -5438,7 +5441,7 @@ function sgTtl(h){ h = String(h||''); const m = h.match(/^([\s\S]+?[.!?])\s+(?=[
 function sgTtlKey(h){ const m = h.match(/^([^<:]+:\s*)([^\s<]+\s+[^\s<]+)([\s\S]*)$/); return m ? m[1]+'<em class="key">'+m[2]+'</em>'+m[3] : h; }
 function sgCoverHTML(s, i){
   return '<article class="cover '+sgCls(s)+' dom-'+sgDom(s)+'" id="c'+i+'" data-i="'+i+'" data-n="'+s.n+'"'+
-      (s.score==null?'':' data-score="'+s.score+'"')+' data-dom="'+sgDom(s)+'" aria-roledescription="עמוד שער" aria-labelledby="c'+i+'-h">'+
+      (s.score==null?'':' data-score="'+s.score+'"')+(s.src==='ev' && !s.editor ? ' data-noed="1"' : '')+' data-dom="'+sgDom(s)+'" aria-roledescription="עמוד שער" aria-labelledby="c'+i+'-h">'+
     /* D72 · סגנון א+ (D69/D70): ראש צבוע בצבע התחום — המספר הגדול, ההשוואה, ואז הכותרת; מתחת: הסרטון, העורך (קרוסלה), ההימור */
     '<header class="c-hd">'+sgFigHTML(s, i)+
     '<h2 class="c-title" id="c'+i+'-h"><button type="button" data-open="'+i+'" aria-haspopup="dialog">'+sgTtlKey(sgTtl(s.title)[0])+'</button></h2>'+
@@ -5588,8 +5591,8 @@ function sgIndexList(){
   /* D12 · 6: האינדקס צובע לפי אותו מפתח תחומים — פס צבע בכל שורה, ושם התחום בשורת המטא (במקום «ציון N») */
   /* D46: בסדר לפי תאריך — תאריך האירוע בראש שורת המטא */
   return sgSortHTML()+'<ol class="sh-list">'+SGS.map((s,i)=>'<li><button type="button" class="'+sgCls(s)+' dom-'+sgDom(s)+'" data-goto="'+i+'"'+(i===sgCur?' aria-current="true"':'')+'>'+
-    '<span class="n">'+s.n+'</span><span class="t">'+s.title+'</span><span class="m">'+sgWkTag(s)+(SG_SORT==='date' && s.date ? sgDateTag(s)+' · ' : '')+'<span class="dm">'+(s.domain ? s.domain.label : '')+'</span> · '+
-    (s.watch&&s.watch.date ? sgCountdown(s.watch.date) : '')+(SG_ST.read.indexOf(s.n)>=0 ? ' · <span class="read-mk">נקרא</span>' : '')+'<span class="here"> · אתה כאן</span></span></button></li>').join('')+
+    '<span class="n">'+s.n+'</span><span class="t">'+s.title+'</span><span class="m">'+sgWkTag(s)+(SG_SORT==='date' && s.date ? sgDateTag(s)+' · ' : '')+'<span class="dm">'+(s.domain ? s.domain.label : '')+'</span>'+
+    (s.watch&&s.watch.date ? ' · '+sgCountdown(s.watch.date) : '')+   /* r9 (REVIEW_SIGEV_c §6.3): בלי «·» תלוי כשאין מועד */(SG_ST.read.indexOf(s.n)>=0 ? ' · <span class="read-mk">נקרא</span>' : '')+'<span class="here"> · אתה כאן</span></span></button></li>').join('')+
     (SG_QI>=0 ? '<li><button type="button" class="s8" data-goto="'+SG_QI+'"'+(sgCur===SG_QI?' aria-current="true"':'')+'><span class="n">?</span><span class="t">השאלה הגדולה: '+SG.question.title+
       '</span><span class="m">ניתוח'+(SG.question.watch&&SG.question.watch.date ? ' · '+sgCountdown(SG.question.watch.date) : '')+'<span class="here"> · אתה כאן</span></span></button></li>' : '')+
     '<li><button type="button" class="s7" data-goto="'+SG_FI+'"'+(sgCur===SG_FI?' aria-current="true"':'')+'><span class="n">✓</span><span class="t">סוף השבוע · מה לעקוב</span><span class="m">'+
@@ -11070,7 +11073,7 @@ function hmSlide(c, M){
   }
   if(c.kind==='sig'){ const s = c.s, f = (s.fig||[])[0], L = hmLive(s.n);
     return {ind:(s.domain ? s.domain.label : '').split(' ')[0], cls:'', img:s.img_cover || s.img || '', go:' data-hsig="'+s.n+'"',
-      html:'<span class="kind"><span class="sc">'+score_display(s)+'</span>סיגנל · '+(s.domain ? s.domain.label : '')+' · '+(s.date_label || sgDmy(s.date))+(L && L.stale ? ' · <i class="tg">התיישן · ציון חי '+L.live.toFixed(1)+'</i>' : '')+'</span>'+
+      html:'<span class="kind">'+(s.src==='ev' ? '' : '<span class="sc">'+score_display(s)+'</span>')+'סיגנל · '+(s.domain ? s.domain.label : '')+' · '+(s.date_label || sgDmy(s.date))+(L && L.stale && L.live!=null ? ' · <i class="tg">התיישן · ציון חי '+L.live.toFixed(1)+'</i>' : '')+'</span>'+
            (f && f.v ? '<div class="hero"><b>'+f.v+'</b><span>'+(f.cap||'')+'</span></div>' : '')+'<h1>'+s.title+'</h1><p>'+hmFirstCard(s)+'</p>'};
   }
   const i = c.i, r = c.r, age = isoDays(c.b.date, M.today);
@@ -11269,7 +11272,7 @@ function hmTags(s){
 function hmDeepCard(s){
   const L = hmLive(s.n);
   return '<article class="hm-lead dp-card dom-'+sgDom(s)+'">'+(s.img ? '<img alt="" src="'+s.img+'">' : '')+'<div class="in">'+
-    '<p class="k"><span>'+(s.domain ? s.domain.label : '')+' · ציון '+score_display(s)+(L ? ' · חי '+L.live.toFixed(1) : '')+'</span><i>'+(s.date_label || sgDmy(s.date))+'</i></p>'+
+    '<p class="k"><span>'+(s.domain ? s.domain.label : '')+(s.src==='ev' ? '' : ' · ציון '+score_display(s)+(L && L.live!=null ? ' · חי '+L.live.toFixed(1) : ''))+'</span><i>'+(s.date_label || sgDmy(s.date))+'</i></p>'+
     '<h3><button type="button" data-hsig="'+s.n+'">'+s.title+'</button></h3>'+(hmLastCard(s) ? '<p class="t">'+hmLastCard(s)+'</p>' : '')+hmTags(s)+
     '<button class="hm-go" type="button" data-hsig="'+s.n+'">לסיגנל המלא</button></div></article>';
 }
