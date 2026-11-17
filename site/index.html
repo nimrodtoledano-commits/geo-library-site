@@ -4525,11 +4525,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.f6f9a35e3c4f.js"></script>
+<script src="d/0.af7c0a40f6f6.js"></script>
 <script src="d/1.72294f7b7969.js"></script>
 <script src="d/2.c03388e2b78f.js"></script>
 <script src="d/3.5aa6ec0846e2.js"></script>
-<script>/*geo-site-split/2 n=4 len=16567789 sha=52120c28459290ad7f7ddd443ed7e6d3e3495a2b483aaeabb5bbc89e6fbb1b3a*/(function(){var H=["f6f9a35e3c4f", "72294f7b7969", "c03388e2b78f", "5aa6ec0846e2"],L=[4141948, 4141948, 4141948, 4141945],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16567789 sha=cc8e354245d4d2a2ee3bbd35057fcb923ff60155726e8e246a6f27efe3b8d907*/(function(){var H=["af7c0a40f6f6", "72294f7b7969", "c03388e2b78f", "5aa6ec0846e2"],L=[4141948, 4141948, 4141948, 4141945],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -6558,6 +6558,8 @@ function goEvent(slug, i){
 
 /* ---------- מקורות וכותבים ---------- */
 function outletTitle(o){ return o.title.replace(/\s*\(.*/,''); }
+/* r10 DOTS1: שם גוף לועזי ברשימה ⇒ <bdi> (שם כמו «OilPrice.com» הוא שם הגוף, לא מתחם שדלף; השער בודק מתחם מחוץ לבידוד — D432) */
+function outletTitleB(o){ const t = outletTitle(o); return /[A-Za-z]/.test(t) ? '<bdi>'+t+'</bdi>' : t; }
 /* D44 · «המכונים שנסרקים»: שמונת המכונים ו«שולחן 4», מהשדה sources של התדריך (build_mobile.briefing_sources) — כמה פריטים
    מכל אחד בתדריך (ספירה מהנתונים) וכמה נסרקו (רק כשהכותרת של התדריך נותנת מספר). שורה = כפתור לעמוד הגוף, כשיש לו עמוד. */
 function srcInstRows(b){
@@ -6584,9 +6586,9 @@ function renderSrc(){
   const b0 = D.briefings[0], inst = srcInstRows(b0);
   if(inst) h += knSec('מכוני המחקר שנסרקים', srcInstSum(b0)+inst, 'src-inst');
   const own = (D.outlets||[]).filter(o=>!o.referred), refO = (D.outlets||[]).filter(o=>o.referred);
-  h += knSec('גופים', '<ul class="kn-list kn-cols">'+own.map(o=>knRow('openOutlet(\''+esc(o.slug)+'\')', outletTitle(o),
+  h += knSec('גופים', '<ul class="kn-list kn-cols">'+own.map(o=>knRow('openOutlet(\''+esc(o.slug)+'\')', outletTitleB(o),
     (CIDX.outlets[o.slug]||[]).length+' פריטים')).join('')+'</ul>');
-  if(refO.length) h += knSec('מקורות מופנים', '<ul class="kn-list kn-cols">'+refO.map(o=>knRow('openOutlet(\''+esc(o.slug)+'\')', outletTitle(o),
+  if(refO.length) h += knSec('מקורות מופנים', '<ul class="kn-list kn-cols">'+refO.map(o=>knRow('openOutlet(\''+esc(o.slug)+'\')', outletTitleB(o),
     (CIDX.outlets[o.slug]||[]).length+' פריטים · דרך רשימה אצורה')).join('')+'</ul>');
   const au = (D.authors||[]).slice().sort((a,b)=>(CIDX.authors[b.slug]||[]).length-(CIDX.authors[a.slug]||[]).length || a.name.localeCompare(b.name));
   h += knSec('כותבים', '<label class="pg-search"><span class="sr-only">חיפוש כותב</span><input id="q" type="search" placeholder="חיפוש כותב…" autocomplete="off" oninput="filterG(\'ag\')"></label>'+
