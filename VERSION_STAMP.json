@@ -1,10 +1,10 @@
 {
 "format": "geo-stamp/1",
-"version": "20261117162454",
-"index_sha256": "91a3fe3b59ad585f57b8cf1c42090531dba8dba4e1bfc54907516ce54dcba334",
-"built_utc": "2026-11-17T16:24:54Z",
+"version": "20261117163916",
+"index_sha256": "4842099ce92b1ea376538fa082b2130226c4a0a4bc04db1822fcef253cbf8d72",
+"built_utc": "2026-11-17T16:39:16Z",
 "file_count": 795,
-"built_at": "2026-11-17T16:24:54Z",
+"built_at": "2026-11-17T16:39:16Z",
 "files": 795,
 "img_count": 203,
 "shell": [
