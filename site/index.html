@@ -4525,11 +4525,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.1bef1c564c5b.js"></script>
+<script src="d/0.a1419f1c0e8e.js"></script>
 <script src="d/1.e4e95aae6d84.js"></script>
 <script src="d/2.3f374418dcd2.js"></script>
 <script src="d/3.a441deee4061.js"></script>
-<script>/*geo-site-split/2 n=4 len=16564097 sha=f5e05c6c5eafb10222f8891073ccd16bd81e0f826ab3293c7c0a7a02b40c9bee*/(function(){var H=["1bef1c564c5b", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16564097 sha=c978077efa25842114ec08d250350ef4cbe18df1698a9990d67bbb487ea923db*/(function(){var H=["a1419f1c0e8e", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -5205,7 +5205,9 @@ function sgLoad(){ try{ const v = JSON.parse(localStorage.getItem(SG_KEY)||'null
 function sgSave(o){ try{ localStorage.setItem(SG_KEY, JSON.stringify(o)); }catch(e){} }
 let SG_PREV = null, SG_ST = {brief:'', last:'', pos:0, read:[], hint:false};
 function sgReelIds(){ const o = []; (typeof SGS!=='undefined' ? SGS : []).forEach(s=>{ if(s.reel && s.reel.card) o.push(String(s.reel.card)); });
-  ((typeof D!=='undefined' && D.item_reels)||[]).forEach(r=>{ if(r && r.id) o.push(String(r.id)); }); return o; }
+  ((typeof D!=='undefined' && D.item_reels)||[]).forEach(r=>{ if(r && r.id) o.push(String(r.id)); });
+  if(typeof newEvReels==='function') newEvReels().forEach(x=>{ if(o.indexOf(x.id)<0) o.push(x.id); });   /* s101 REELHOME (D477): גם רילסי האירועים נרשמים בביקור */
+  return o; }
 function sgVisitInit(){
   SG_PREV = sgLoad();
   const same = !!(SG_PREV && SG_PREV.brief===SG.date);
@@ -5347,20 +5349,22 @@ document.addEventListener('click', e=>{ const b = e.target.closest('[data-edgo]'
 document.addEventListener('scroll', e=>{ const tr = e.target && e.target.classList && e.target.classList.contains('ed-track') ? e.target : null; if(tr) edCarSync(tr.closest('.ed-car')); }, true);
 /* D25 (משוב הבעלים): כפתור בולט «צפו בסרטון ההסבר» — קישור אמיתי (<a target="_blank">), כי הלוח רץ בתוך claude.ai והסרטון
    הוא ארטיפקט נפרד. הכתובת מ-status/research/video/reels.json (נקראת בבנייה, רק https). סיגנל בלי רילס — בלי שורה בכלל. */
+/* REELHOME r2 (D477): אורך הסרטון כמו e4Min/hmMin — מתחת ל-2 דקות בשניות («כ-71 שניות», לא «כ-1 דקות») */
+function sgReelLen(min){ const v = +min||0; return v ? (v<2 ? 'כ-'+Math.round(v*60)+' שניות' : 'כ-'+Math.round(v)+' דקות') : ''; }
 function sgReelHTML(s){
   /* D28: הרילס הוא קובץ נלווה באותו ארטיפקט (reels/<card>.html) ונפתח בשכבה על מסך מלא; הכתובת החיצונית נשארת כגיבוי */
   /* s101 REELS (D432 ס׳1ד): reel.url = נתיב יחסי באתר (reels/<id>.html, tools/reel_policy.py) — נפתר מול baseURI (rvFb); כתובת https ישנה עדיין מתקבלת */
   const r = s && s.reel, fbu = r ? rvFb(r.url) : ''; if(!r || !fbu) return '';
-  const m = r.minutes ? Math.max(1, Math.round(r.minutes)) : 0;
+  const m = sgReelLen(r.minutes);
   const src = (r.card && /^[\w-]+$/.test(r.card)) ? rvAbs('reels/'+r.card+'.html') : '';
   const tt = String(s.title||'').replace(/<[^>]+>/g,'').replace(/"/g,'&quot;');
   if(!src) return '<p class="c-reel"><a class="btn-reel" href="'+fbu+'" target="_blank" rel="noopener" data-reel="'+s.n+'">'+
     '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>'+
-    '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>כ-'+m+' דקות</small>' : '')+'<span class="vh"> (נפתח בלשונית חדשה)</span></a></p>';
+    '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>'+m+'</small>' : '')+'<span class="vh"> (נפתח בלשונית חדשה)</span></a></p>';
   const th = (s.img && /^(data:image\/|https:\/\/|img\/[0-9a-f]{64}\.(?:jpg|png|webp|gif)$)/.test(s.img)) ? ' style="background-image:url(\''+s.img+'\')"' : '';   /* D72: פריים מהסיגנל בכפתור (D69); s101: גם תמונה כקובץ img/<sha>.<ext> (הרזיה שלב 1) */
   return '<p class="c-reel"><button class="btn-reel" type="button" data-reel="'+s.n+'" data-reel-src="'+src+'" data-reel-fallback="'+fbu+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
     '<span class="rth'+(th?'':' noimg')+'"'+th+'><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>'+
-    '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>כ-'+m+' דקות</small>' : '')+'</button></p>';
+    '<span>צפו בסרטון ההסבר</span>'+(m ? '<small>'+m+'</small>' : '')+'</button></p>';
 }
 /* D28 · שכבת הרילס: iframe על מסך מלא, סגירה ב-× / Esc / Back, נעילת גלילה, החזרת מיקוד לכפתור. ההודעות שהמארח של claude.ai שולח
    לדף (postMessage) לא נוגעות לנו — אין כאן מאזין הודעות בכלל. */
@@ -5430,9 +5434,9 @@ window.addEventListener('popstate', ()=>{ if(RV_OPEN) closeReelOverlay(true); })
 /* D28 · רצועת «סרטוני הסבר» — כל הסיגנלים שיש להם רילס, לפתיחה באותה שכבה */
 function reelsExplainersHTML(){
   const rows = SGS.filter(s=>s.reel && s.reel.card).map(s=>{
-    const r = s.reel, m = r.minutes ? Math.max(1, Math.round(r.minutes)) : 0, tt = String(s.title||'').replace(/<[^>]+>/g,'').replace(/"/g,'&quot;');
+    const r = s.reel, m = sgReelLen(r.minutes), tt = String(s.title||'').replace(/<[^>]+>/g,'').replace(/"/g,'&quot;');
     return '<li><button class="kn-row" type="button" data-reel="'+s.n+'" data-reel-src="'+rvAbs('reels/'+r.card+'.html')+'" data-reel-fallback="'+r.url+'" data-reel-title="'+tt+'" aria-haspopup="dialog">'+
-      '<span class="kn-t">'+s.title+'</span><small>סיגנל '+s.n+(m ? ' · כ-'+m+' דקות' : '')+'</small><span class="kn-ar" aria-hidden="true">▶</span></button></li>';
+      '<span class="kn-t">'+s.title+'</span><small>סיגנל '+s.n+(m ? ' · '+m : '')+'</small><span class="kn-ar" aria-hidden="true">▶</span></button></li>';
   });
   return rows.length ? '<div class="rv-strip"><b class="rv-sh">סרטוני הסבר</b><ul class="kn-list">'+rows.join('')+'</ul></div>' : '';
 }
@@ -8009,7 +8013,7 @@ function vfList(){
   if(typeof EV4!=='undefined' && EV4 && EV4.d112 && (EV4.d112.reels||[]).length){
     const all = EV4.d112.reels.filter(r=>/^reels\/[\w-]+\.html$/.test(r.src)).map(r=>{ const e = r.ev && typeof e4Key==='function' ? e4Key(r.ev) : null;
       return {id:r.id, src:r.src, plain:r.plain||'', title:r.title, n:0, wk:r.date, min:(r.sec||0)/60, sec:r.sec||0, dom:e ? e.dom : 'world', fb:'', ev:r.ev||'', terr:r.terr, bg:r.type==='רקע',
-        type:r.type, axes:r.axes||[], img:(e && e.img) || r.img || '', hub:r.hub||'', hash:r.hash||'', chapters:r.chapters||[], bgch:r.bgch||null}; });   /* D290 R1 */
+        type:r.type, axes:r.axes||[], img:r.img || (e && e.img) || ''   /* REELHOME: פריים הרילס עצמו קודם (כמו באוויר לרילס בלי אירוע); אין ⇒ של האירוע */, hub:r.hub||'', hash:r.hash||'', chapters:r.chapters||[], bgch:r.bgch||null}; });   /* D290 R1 */
     const act = all.filter(v=>!v.bg), bgs = all.filter(v=>v.bg);
     const U0 = (typeof newModel==='function') ? newModel().unseen : {};
     const L = act.concat(bgs).filter(rsMatch); L.forEach(v=>{ v.isNew = !!(v.id && U0[v.id]); });
@@ -8579,9 +8583,16 @@ function arriveMap(){
   D.briefings.forEach(b=>put(b.date, b.date, seenB));
   const top = (typeof SG!=='undefined' && SG) ? SG.date : '';
   ((typeof D!=='undefined' && D.item_reels) || []).forEach(r=>{ if(r && newIsCard(r.id)) put(r.id, r.date||'', seenR); });
-  (typeof SGS0!=='undefined' ? SGS0 : (typeof SGS!=='undefined' ? SGS : [])).forEach(s=>{ if(s.reel && newIsCard(s.reel.card)) put(s.reel.card, s.wk||top, seenR); });
+  (typeof SGS0!=='undefined' ? SGS0 : (typeof SGS!=='undefined' ? SGS : [])).forEach(s=>{ if(s.src!=='ev' && s.reel && newIsCard(s.reel.card)) put(s.reel.card, s.wk||top, seenR); });   /* REELHOME: סיגנל-מאירוע — הרילס נספר מהקטלוג בתאריך שלו, לא בשבוע התדריך */
+  newEvReels().forEach(x=>put(x.id, x.date, seenR));   /* s101 REELHOME (D477): רילסי אירועים מהקטלוג */
   try{ localStorage.setItem(ARRIVE_KEY, JSON.stringify(A)); }catch(e){}
   ARRIVE = A; return A;
+}
+/* s101 REELHOME (D477): «רילסים חדשים» לא תלויים בסיגנל — כל רילס בקטלוג שמחובר לאירוע (e4ReelLib, ev4.js), לפי תאריך הרילס */
+function newEvReels(){
+  if(typeof e4ReelLib!=='function') return [];
+  return e4ReelLib().map(x=>({kind:'ev', id:x.r.id, src:x.r.src, url:'', title:String(x.r.title||''), min:(+x.r.sec||0)/60, date:x.r.date||x.e.date||'', k:x.e.terr||x.r.terr||'', dom:x.e.dom||'world', img:x.e.img||x.r.img||'', ev:x.e.key}))
+    .filter(x=>newIsCard(x.id));
 }
 function newModel(){
   const A = arriveMap(), v = visitPoint(), today = bvToday(), cutoff = isoShift(today, -NEW_WINDOW_DAYS);
@@ -8599,9 +8610,10 @@ function newModel(){
     reels.push({kind:'item', id:r.id, src:r.src, url:/^https:\/\/[^\s"'<>]+$/.test(r.url||'') ? r.url : '', title:String(r.title||''), min:+r.min||0,
       date:r.date||'', item:r.item||'', tier:r.tier||'', k:(o ? o.title.replace(/\s*\(.*/,'') : (r.outlet||'')), dom:'world', img:''}); });
   (typeof SGS0!=='undefined' ? SGS0 : (typeof SGS!=='undefined' ? SGS : [])).forEach(s=>{
-    if(!s.reel || !newIsCard(s.reel.card) || !isNewR(s.reel.card, s.wk||top)) return;
+    if(s.src==='ev' || !s.reel || !newIsCard(s.reel.card) || !isNewR(s.reel.card, s.wk||top)) return;   /* REELHOME: ראו newEvReels */
     reels.push({kind:'sig', id:s.reel.card, src:'reels/'+s.reel.card+'.html', url:/^https:\/\/[^\s"'<>]+$/.test(s.reel.url||'') ? s.reel.url : '', title:String(s.title||''),
       min:+s.reel.minutes||0, date:s.wk||top, n:s.n, k:'סיגנל '+s.n+(s.domain ? ' · '+s.domain.label : ''), dom:sgDom(s), img:s.img||'', s:s}); });
+  newEvReels().forEach(x=>{ if(!isNewR(x.id, x.date) || reels.some(r=>r.id===x.id)) return; reels.push(x); });   /* s101 REELHOME (D477) */
   reels.sort((a,b)=> a.date===b.date ? (a.kind===b.kind ? 0 : a.kind==='item' ? -1 : 1) : (a.date < b.date ? 1 : -1));
   /* D84: מה עוד לא נראה — אלה שמקבלים תג וקופצים לראש; המונה סופר רק אותם */
   reels.forEach(r=>{ r.seen = seenHas(r.id); });
@@ -9327,6 +9339,10 @@ function e4Related(e){
   all.filter(share).forEach(x=>L.push(x)); all.filter(x=>L.indexOf(x)<0 && x.terr===e.terr).forEach(x=>L.push(x)); all.filter(x=>L.indexOf(x)<0).forEach(x=>L.push(x));
   return L.slice(0,3);
 }
+/* s101 REELHOME (D477): ספריית רילסי האירועים — מהקטלוג (EV4.d112.reels; r.ev מהרישום, tools/ev4_model.attach_registry_reels), לא מסיגנלים.
+   מקור אחד לרצועה בבית (home.js), ל«חדש» (whatsnew.js) ולבודק (tools/check_reel_reach.py). רילס רקע / בלי אירוע שנפתר — לא כאן. */
+function e4ReelLib(){ try{ const R = (EV4 && EV4.d112 && EV4.d112.reels) || [];   /* try: נקרא גם מ-sgVisitInit — לפני ש-EV4 הוגדר ⇒ [] */
+  return R.filter(r=>r && r.type!=='רקע' && r.ev && /^reels\/[\w-]+\.html$/.test(r.src||'')).map(r=>({r:r, e:e4Key(r.ev)})).filter(x=>x.e); }catch(err){ return []; } }
 function e4ReelBtn(e, cls, inner){
   return '<button class="'+cls+'" type="button" data-reel-src="'+e4Esc(typeof rvAbs==='function' ? rvAbs(e.reel.src) : e.reel.src)+'" data-reel-fallback="" data-reel-title="'+e4Esc(e.title)+'" aria-haspopup="dialog">'+inner+'</button>';
 }
@@ -9365,7 +9381,9 @@ function e4Gate(e, opt){
   const sw_ = cards.length ? '<div class="e4-swp"><div class="e4-rail" id="'+sw+'">'+cards.map((c,i)=>'<div class="e4-cd'+cls(c)+'"><b>'+(i+1)+'/'+cards.length+' · '+e4Esc(c.k)+'</b>'+body(c)+'</div>').join('')+'</div>'+
     '<div class="e4-nav"><button type="button" data-e4sw="'+sw+'" data-dir="prev" aria-label="הקלף הקודם">›</button><button type="button" data-e4sw="'+sw+'" data-dir="next" aria-label="הקלף הבא">‹</button><span class="dots">'+cards.map((c,i)=>'<i'+(i===0?' class="on"':'')+'></i>').join('')+'</span><span>החלקה להמשך</span></div></div>' : '';
   const R = e.reel ? e4Related(e) : [];
-  const vid = e.reel ? e4ReelBtn(e, 'e4-vrow', '<span class="fr">'+(e.img ? '<img alt="" loading="lazy" src="'+e.img+'">' : '')+'</span><b>הסרטון שמסביר<small>'+e4Min(e.reel.min)+'</small></b><i aria-hidden="true"></i>')+
+  /* s101 REELHOME (D477): רילס נוסף של אותו אירוע (e.reels_more, מהרישום) — אותו רכיב שורת הסרטון, אחרי הראשי */
+  const more = (e.reels_more||[]).map(x=>'<button class="e4-vrow" type="button" data-reel-src="'+e4Esc(typeof rvAbs==='function' ? rvAbs(x.src) : x.src)+'" data-reel-fallback="" data-reel-title="'+e4Esc(x.title||e.title)+'" aria-haspopup="dialog"><span class="fr">'+(e.img ? '<img alt="" loading="lazy" src="'+e.img+'">' : '')+'</span><b>'+e4Esc(x.title||'סרטון נוסף')+'<small>סרטון נוסף · '+e4Min(x.min)+'</small></b><i aria-hidden="true"></i></button>').join('');
+  const vid = e.reel ? e4ReelBtn(e, 'e4-vrow', '<span class="fr">'+(e.img ? '<img alt="" loading="lazy" src="'+e.img+'">' : '')+'</span><b>הסרטון שמסביר<small>'+e4Min(e.reel.min)+'</small></b><i aria-hidden="true"></i>')+more+
       (R.length ? '<div class="e4-nx"><span>אחרי הסרטון:</span>'+R.map(x=>'<button type="button" data-e4open="'+x.key+'">'+(x.img ? '<img alt="" loading="lazy" src="'+x.img+'">' : '<i></i>')+e4Esc(e4T(x))+'</button>').join('')+'</div>' : '')
     : (e.reel_pending ? '<div class="e4-vrow prep" role="note"><span class="fr"></span><b>סרטון בהכנה<small>התמונות לסרטון עוד לא מוכנות</small></b></div>' : '');
   const act = (opt && opt.act) ? opt.act : '<div class="e4-act"><button type="button" class="e4-deep" data-e4deep="'+e.key+'">העמקה</button>'+e4ShareBtn(e.key)+'<button class="e4-srcgo" type="button" data-e4src="'+e.key+'">מקורות ←</button></div>';
@@ -11006,14 +11024,18 @@ function hmModel(){
   const itemEntry = r=>{ const o = (D.outlets||[]).find(x=>x.slug===r.outlet); return {id:r.id, src:r.src, url:r.url||'', title:String(r.title||''), min:+r.min||0, img:r.img||'', fx:r.fx, fy:r.fy, dom:'world', fig:null, n:0,
     k:(o ? o.title.replace(/\s*\(.*/,'') : (r.outlet||'')), date:r.date||'', item:r.item||''}; };
   /* D106: הרילסים בבית = רילסי האירועים (D.ev4) מ-14 הימים — כל רילס מחובר לאירוע שלו, עם הפריים של האירוע; אירוע שנפסל (D99) לא מופיע */
-  var evEntry = e=>({id:e.reel.src.replace(/^reels\//,'').replace(/\.html$/,''), src:e.reel.src, url:'', title:e4T(e), min:+e.reel.min||0, img:e.img||'', dom:e.dom, fig:e.hero ? {v:e.hero} : null, n:0, k:e.terr, date:e.date, ev:e.key});
-  const base = (typeof EV4!=='undefined' && EV4) ? E4.filter(e=>e.reel && e.date >= cut && !e4IsTalk(e)).map(evEntry).sort((a,b)=> a.date===b.date ? 0 : (a.date < b.date ? 1 : -1)) : week.filter(s=>s.reel && /^[\w-]+$/.test(s.reel.card||'')).map(sigEntry)
+  /* s101 REELHOME (D477): הרצועה = רילסי הקטלוג שמחוברים לאירוע (e4ReelLib), לפי תאריך הרילס עצמו — לא e.reel של אירוע ולא רילס של סיגנל.
+     קודם: רק אירוע שהרילס «שלו» הגיע מכרטיס סיגנל — רילס שנרשם לאירוע/צומת (event_key) לא הגיע לבית. אירוע «דיבור» (D199) — עדיין לא. */
+  var evEntry = (e, r)=>({id:(r ? r.src : e.reel.src).replace(/^reels\//,'').replace(/\.html$/,''), src:r ? r.src : e.reel.src, url:'', title:r && r.src!==(e.reel||{}).src ? (r.title||e4T(e)) : e4T(e),
+    min:r ? (+r.sec||0)/60 : (+e.reel.min||0), img:e.img||(r && r.img)||'', dom:e.dom, fig:e.hero ? {v:e.hero} : null, n:0, k:e.terr, date:(r && r.date) || e.date, ev:e.key});
+  const RL = (typeof EV4!=='undefined' && EV4 && typeof e4ReelLib==='function') ? e4ReelLib() : [];
+  const base = (typeof EV4!=='undefined' && EV4) ? RL.filter(x=>(x.r.date||x.e.date) >= cut && !e4IsTalk(x.e)).map(x=>evEntry(x.e, x.r)).sort((a,b)=> a.date===b.date ? 0 : (a.date < b.date ? 1 : -1)) : week.filter(s=>s.reel && /^[\w-]+$/.test(s.reel.card||'')).map(sigEntry)
     .concat((D.item_reels||[]).filter(r=>r && /^[\w-]+$/.test(r.id||'')).map(itemEntry))
     .filter(e=>!e.date || e.date >= cut).sort((a,b)=> a.date===b.date ? 0 : (a.date < b.date ? 1 : -1));
   const strip = [], have = {};
-  const E4ON = (typeof EV4!=='undefined' && EV4), evByReel = id=>E4ON ? E4.find(e=>e.reel && e.reel.src==='reels/'+id+'.html') : null;
-  N.reels.filter(r=>!r.seen).forEach(r=>{ if(have[r.id]) return; if(E4ON){ const e = evByReel(r.id); if(!e || e4IsTalk(e)) return; have[r.id] = 1;   /* s83 · D199 ב: רילס של «דיבור» בצומת חשוד לא עולה לרצועת הבית */
-      strip.push(Object.assign(evEntry(e), {isNew:true})); return; }   /* D106: רק רילס שמחובר לאירוע */
+  const E4ON = (typeof EV4!=='undefined' && EV4), evByReel = id=>E4ON ? RL.find(x=>x.r.src==='reels/'+id+'.html') : null;   /* REELHOME: לפי הקטלוג */
+  N.reels.filter(r=>!r.seen).forEach(r=>{ if(have[r.id]) return; if(E4ON){ const x = evByReel(r.id); if(!x || e4IsTalk(x.e)) return; have[r.id] = 1;   /* s83 · D199 ב: רילס של «דיבור» בצומת חשוד לא עולה לרצועת הבית */
+      strip.push(Object.assign(evEntry(x.e, x.r), {isNew:true})); return; }   /* D106: רק רילס שמחובר לאירוע */
     have[r.id] = 1; strip.push(Object.assign(r.s ? sigEntry(r.s) : itemEntry(hmReelById(r.id) || r), {isNew:true})); });
   base.forEach(e=>{ if(have[e.id]) return; have[e.id] = 1; const nr = N.reels.find(r=>r.id===e.id); strip.push(Object.assign(e, {isNew:false, seen:!!(nr && nr.seen)})); });
   /* D114: הרצועה ממשיכה מ«האירועים השבועיים» — קודם רילסים של אירועים שלא בראש השבועיים (3 הראשונים) ולא בדף הראשון של השער;
