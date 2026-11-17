@@ -4525,11 +4525,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.7e395482fc6e.js"></script>
+<script src="d/0.49cdc6a1291b.js"></script>
 <script src="d/1.e4e95aae6d84.js"></script>
 <script src="d/2.3f374418dcd2.js"></script>
 <script src="d/3.a441deee4061.js"></script>
-<script>/*geo-site-split/2 n=4 len=16564097 sha=19405eabc651d56122fd1b77a4b8d4cb5ad0a078aec063a986d140e94978a7c9*/(function(){var H=["7e395482fc6e", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16564097 sha=b47e68a3a39d5d69eede38f1a4a6c6318dda1473e14d5b45d7845cbbeaec4c76*/(function(){var H=["49cdc6a1291b", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -5571,6 +5571,9 @@ function sgFinaleHTML(){
     /* s101 SIGEV · D453: «לוח התוצאות», ספירת התחזיות והקישור למסך התחזיות — לא מוצגים */
 
     ((SG.watchlist||[]).length ? '<h3>מה לעקוב בשבוע הבא</h3><ul class="wl">'+SG.watchlist.map(w=>'<li>'+w+'</li>').join('')+'</ul>' : '')+
+    /* ENG7 (D492): «במעקב — ממתין לאימות» — טענות על יעד קריטי, בלי ציון ובלי מספר; רכיבים קיימים (h3 + ul.wl); מגיע מהנתונים רק כשהדגל דלוק */
+    ((SG.watch_track||[]).length ? '<h3>במעקב — ממתין לאימות</h3><ul class="wl">'+SG.watch_track.map(w=>'<li><strong>'+w.label+':</strong> '+
+      w.line+(w.context ? ' · '+w.context : '')+'</li>'   /* V7_REVIEW ס׳7: מי טוען — בתחילת השורה (הטקסט מהבנאי) */).join('')+'</ul>' : '')+
     '<div class="fin-act"><button class="btn-solid" type="button" data-evidence="1"><span>לראיות — מה כתבו המכונים השבוע</span><span aria-hidden="true">←</span></button>'+
     '<button class="btn-quiet" type="button" data-goto="0">↑ חזרה לסיגנל 1</button></div>'+
     /* D44: מהסוף — ישר לעמוד המקורות (מי נסרק השבוע, וכמה פריטים מכל מכון) */
