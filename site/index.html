@@ -4525,11 +4525,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.8590f3151174.js"></script>
+<script src="d/0.7e395482fc6e.js"></script>
 <script src="d/1.e4e95aae6d84.js"></script>
 <script src="d/2.3f374418dcd2.js"></script>
 <script src="d/3.a441deee4061.js"></script>
-<script>/*geo-site-split/2 n=4 len=16564097 sha=52430e1c5735d1e876fc3d5287057dc7fd2fb04d2b229f7330c50b4f6180d3b0*/(function(){var H=["8590f3151174", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16564097 sha=19405eabc651d56122fd1b77a4b8d4cb5ad0a078aec063a986d140e94978a7c9*/(function(){var H=["7e395482fc6e", "e4e95aae6d84", "3f374418dcd2", "a441deee4061"],L=[4141025, 4141025, 4141025, 4141022],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -12948,7 +12948,7 @@ function emHTML(P){
     embHero(P, ax)+(P.question ? '<div class="emb-q"><small>השאלה שאנחנו בודקים</small><p>'+tx(P.question)+'</p></div>' : '')+embGauge(P.meter, P.m389, P.id);
   s += emBlock(1, 'מה תפס לנו את הרדאר? (האיתות השקט)', has(P.radar) ? P.radar.map(emTxtP).join('') : emPs(P.why), '', emSum(has(P.radar) ? P.radar[0] : (P.why||[])[0]));
   s += emBlock(2, 'איך החוטים מתחברים? (המנגנון המתהווה)', embWeb(P)+(has(P.threads) ? P.threads.map(emTxtP).join('') : (emPs(facts)+(P.as ? emP({t:P.as}) : ''))), '', emSum(has(P.threads) ? P.threads[0] : (facts[0] || P.as)));
-  const more = (P.also && P.also.length ? '<h3 class="emh-h3">נוגע גם <small>שייך לצומת אחר, לא נספר כאן</small></h3>'+emList(P.also, 'emh-also-'+esc(P.id), 4) : '')+
+  const more = (P.also && P.also.length ? '<h3 class="emh-h3">נוגע גם <small>לא נספר כאן: אותה עובדה כבר נספרת, או שהקשר לצומת עקיף</small></h3>'+emList(P.also, 'emh-also-'+esc(P.id), 4) : '')+
     (P.ctx && P.ctx.length ? '<h3 class="emh-h3">הקשר <small>ניתוח או דעה, לא נספר</small></h3>'+emList(P.ctx, 'emh-ctx-'+esc(P.id), 4) : '');
   s += emBlock(3, 'לוח הראיות עד כה (ציר האיתותים)', (has(P.evidence) ? '' : note.map(p=>'<p class="emx-sn">'+tx(p.t)+'</p>').join(''))+emTl(P)+
     (more ? '<details class="emx-more"><summary>נוגע גם והקשר — לא נספרים</summary>'+more+'</details>' : ''), nE ? ((P.meter && typeof P.meter.n==='number' && P.meter.n!==nE) ? nf(P.meter.n)+' ראיות נספרות · '+nf(nE)+' בלוח' : (nE===1 ? 'ראיה אחת' : nf(nE)+' ראיות')) : '', evLast ? emSum(evLast.t) : '');
