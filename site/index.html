@@ -4542,11 +4542,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.f778522c2da8.js"></script>
+<script src="d/0.82df1dc570cc.js"></script>
 <script src="d/1.e414bfa6e088.js"></script>
 <script src="d/2.beb6a7b60be5.js"></script>
 <script src="d/3.3e0854402c7d.js"></script>
-<script>/*geo-site-split/2 n=4 len=16619750 sha=137a905fd6e0f42d08f55835d1fa2f283d49561dfbe2982c63816f7bbc173158*/(function(){var H=["f778522c2da8", "e414bfa6e088", "beb6a7b60be5", "3e0854402c7d"],L=[4154938, 4154938, 4154938, 4154936],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16619750 sha=1db6ba8fa4325b8e9c887331dfe96fe4dec625ee26d9480917bfdfb2f9e3afb8*/(function(){var H=["82df1dc570cc", "e414bfa6e088", "beb6a7b60be5", "3e0854402c7d"],L=[4154938, 4154938, 4154938, 4154936],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -10707,6 +10707,21 @@ if(typeof window!=='undefined') window.__hubs = {model:()=>hbModel(), list:hbLis
    המגירה נפתחת מכרטיס «תיקי נושא וארכיון» בהגדרות (settings.js hbdCardHTML, data-stg-hbdr). hbFabInit נשאר (לא נקרא) — כדי לא לשבור קוד ישן שבודק אותו. */
 const HB_FAB = false;
 if(HB_FAB) hbFabInit();
+/* ===== s102 n-hubq · שאלת הצומת מהתיק המאושר (D484). נטען רק כשהמתג דלוק (tools/hubq_build.py, data/hub_question_display.json), מיד אחרי hubs.js.
+   כבוי ⇒ הקובץ לא בבנייה. הכרטיס ועמוד הצומת מקבלים את השאלה מהנתונים (h.question, hubpage.question.q) — אין כאן שינוי שלהם.
+   כאן רק: שורת «הצומת שואל» בעמוד האירוע (hbWhyHubHTML) נשארת בנוסח שהיה באוויר (D.v75.hubs[].question_ev) — עמודי אירועים לא משתנים (D500, D531 ס׳2). */
+(function(){
+'use strict';
+if(typeof hbWhyHubHTML!=='function' || typeof hbModel!=='function') return;
+const HQ_OLD = hbWhyHubHTML;
+function hqEv(id){ const V = (typeof D!=='undefined' && D && D.v75) || {}, L = Array.isArray(V.hubs) ? V.hubs : []; for(let i=0;i<L.length;i++){ if(L[i] && L[i].id===id) return L[i].question_ev; } return undefined; }
+hbWhyHubHTML = function(e){
+  const hid = ((e && e.hubs || [])[0] || {}).id || '', m = hbModel(), h = hid && m.byId ? m.byId[hid] : null, q0 = hid ? hqEv(hid) : undefined;
+  if(!h || typeof q0!=='string') return HQ_OLD(e);
+  const q = h.question; h.question = q0.trim();
+  try{ return HQ_OLD(e); } finally { h.question = q; }
+};
+})();
 /* ===== s101 · GEO_D4_HUBNAV (D295 — «עיקר הניווט הוא על בסיס צמתים»; N14: ניווט לפי צמתים, גאוגרפיה סינון משני) =====
    נטען רק כשהמתג דלוק (ברירת מחדל; GEO_D4_HUBNAV=0 מכבה — tools/d4hub_build.py). כבוי ⇒ הקובץ לא בבנייה, והמגירה כמו היום.
    שינוי סדר בלבד, בלי רכיב חדש ובלי CSS חדש: מגירת התיקים מקבלת מקטע «צמתים» ראשון — שורה לכל צומת חי (לא רדום, ויש לו אירוע ב-14 הימים),
@@ -13146,6 +13161,25 @@ if(typeof hbAEm==='function'){ const AEM0 = hbAEm;
   hbAEm = function(x){ const id = x && (x.hub ? x.hub.id : (x.c && x.c.id)); return (id && !x.hub && emData(id)) ? embCard(id, {cls:'hbA-em', q:true}) : AEM0.apply(this, arguments); };   // eslint-disable-line no-func-assign
 }
 if(typeof window!=='undefined') window.GEO_EMHUB = {on:1, ids:()=>Object.keys(emAll()), shown:emShown, render:emHTML, open:id=>hbOpen(id)};
+})();
+/* ===== s102 n-hubq2 · שאלת הצומת בהתהוות (E1–E4) מהתיק המאושר (D484, D551 ס׳6). נטען רק כשהמתג דלוק (tools/hubq_build.py), מיד אחרי emhub.js.
+   כבוי ⇒ הקובץ לא בבנייה. בנתונים: D.v75.emhub[id].question = הנוסח לכרטיס (קצרה, ואם אין — המלאה) — הכרטיס בעמוד הצמתים והנקודה במפה קוראים אותו בלי שינוי.
+   כאן רק: עמוד הצומת בהתהוות («השאלה שאנחנו בודקים») מציג את המלאה — question_full — בזמן הציור, ואז מחזיר. אין CSS חדש, אין בורר חדש. */
+(function(){
+'use strict';
+if(typeof hbOpen!=='function') return;
+const HQE_OLD = hbOpen;
+function hqeP(id){ const V = (typeof D!=='undefined' && D && D.v75) || {}, E = (V.emhub && typeof V.emhub==='object') ? V.emhub : {}, P = E[id]; return (P && typeof P==='object') ? P : null; }
+hbOpen = function(id){   // eslint-disable-line no-func-assign
+  const P = hqeP(id);
+  if(!P || typeof P.question_full!=='string') return HQE_OLD.apply(this, arguments);
+  const q = P.question; P.question = P.question_full;
+  try{ return HQE_OLD.apply(this, arguments); } finally { P.question = q; }
+};
+if(typeof window!=='undefined' && window.GEO_EMHUB && typeof window.GEO_EMHUB.render==='function'){
+  const R0 = window.GEO_EMHUB.render;
+  window.GEO_EMHUB.render = function(P){ if(!P || typeof P.question_full!=='string') return R0.apply(this, arguments); const q = P.question; P.question = P.question_full; try{ return R0.apply(this, arguments); } finally { P.question = q; } };
+}
 })();
 /* ---------- סבב D3 · האתר המלא (index.html) בלבד ----------
    האתר המלא נבנה מאותם מודולים של הלוח המפורסם (mobile/src) — אותה שפה, אותם מסכים — ועוד המודול הזה, שמוסיף רק את מה
