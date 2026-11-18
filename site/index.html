@@ -4029,6 +4029,23 @@ html:has(#mx-sheet.open) #nav-back{display:none}
 .d5-n4 #hb-fab.d5-hide{transform:translateY(calc(-100% - 20px)); opacity:0; pointer-events:none}
 @media (prefers-reduced-motion:reduce){ .d5-n4 #hb-fab{transition:none} }
 
+/* s102 n-maps חלק ב (GEO_MAPS2=1) — מפת הצמתים: שם על כל מדינה צבועה (12px מסולם R-ds-20; לבן על כהה / כהה על בהיר, ניגודיות ≥4.5:1 מול המילוי של 48%),
+   שמות הקשר עמומים, גבולות לכל המדינות, בירה. נטען רק כשהמתג דלוק (tools/maps2_build.py; רשום ב-css_order של tools/design_freeze.py). */
+#mapsec .m2-cf{fill:var(--hb-land)}
+/* D556 «אפשר אפילו לחזק מעט את הצבעים במפה האינטרקטיבית»: מדינה צבועה 48% (היה 42%, D303ה) — הערך הגבוה ביותר שבו שם לבן על מדינה צבועה נשאר ≥4.5:1 בכהה עם מרווח (4.73); בבהיר 6.8 */
+#mapsec .hb-cf:not(.off){fill:color-mix(in srgb, var(--ax) 48%, var(--hb-land))}
+#mapsec .mx-lb.c text{font:700 12px/1 var(--font-ui); fill:#ffffff; stroke:#14181d; stroke-width:3px}
+#mapsec .mx-lb.x text{font:600 12px/1 var(--font-ui); fill:var(--ink-2); stroke:var(--hb-sea); stroke-width:3px}
+#mapsec .mx-lb.k text{font:700 12px/1 var(--font-ui); fill:var(--ink); stroke:var(--hb-sea); stroke-width:3px}
+#mapsec .m2-capd{fill:var(--ink); stroke:var(--hb-sea); stroke-width:1.6px}
+#mapsec .hb-leg .m2-lg span{gap:6px}
+#mapsec .hb-leg .m2-sw{flex:none; width:16px; height:10px; border-radius:2px; background:linear-gradient(90deg, color-mix(in srgb, var(--ax-sec) 48%, var(--hb-land)) 0 33%, color-mix(in srgb, var(--ax-eco) 48%, var(--hb-land)) 33% 66%, color-mix(in srgb, var(--ax-tec) 48%, var(--hb-land)) 66%); border:1px solid var(--hb-line)}
+:root[data-theme="light"] #mapsec .mx-lb.c text{fill:#17191c; stroke:#e7eae4}
+.m2-capl{margin:-4px 0 8px; font:400 14px/1.4 var(--font-ui); color:var(--ink-2)}
+.m2-capl b{font-weight:700; color:var(--ink)}
+/* s102 n-maps-prelight: «מדינות מתחת לנקודה» בגיליון — שורה של כפתורי hm-chip (הקיימים, ≥44px), גלישה לשורות */
+.m2-cbs{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px}
+
 /* D305 · תת-מתג GEO_D305_EMV75 — נטען רק כשגם GEO_D305=1 וגם התת-מתג דלוק (tools/d305_build.py). ממתין לבעלים (זוג בדף הצפייה). s93 rel11: הופרד מ-d305.css כדי שבנייה עם GEO_D305=1 לבד תכיל רק CSS של 13 הכרטיסים המאושרים. */
 .d5-emv{display:flex; flex-direction:column; gap:2px; padding:10px 0; border-bottom:1px solid var(--rule); font:500 14px/1.45 var(--font-ui); color:var(--ink-2)}
 .d5-emv b{font:800 16px/1.35 var(--font-ui); color:var(--ink)}
@@ -4525,11 +4542,11 @@ html.cs-on .nav-back{visibility:hidden}
 
 <script id="data" type="application/json"></script>
 <script>window.__GEO_SD=[];</script>
-<script src="d/0.39cd1af83c2c.js"></script>
+<script src="d/0.f778522c2da8.js"></script>
 <script src="d/1.e414bfa6e088.js"></script>
 <script src="d/2.beb6a7b60be5.js"></script>
 <script src="d/3.3e0854402c7d.js"></script>
-<script>/*geo-site-split/2 n=4 len=16619750 sha=ea3b32dec4434544019b1b8c1037b2974c6d0c783d04584c144bfceded5c3ca2*/(function(){var H=["39cd1af83c2c", "e414bfa6e088", "beb6a7b60be5", "3e0854402c7d"],L=[4154938, 4154938, 4154938, 4154936],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
+<script>/*geo-site-split/2 n=4 len=16619750 sha=137a905fd6e0f42d08f55835d1fa2f283d49561dfbe2982c63816f7bbc173158*/(function(){var H=["f778522c2da8", "e414bfa6e088", "beb6a7b60be5", "3e0854402c7d"],L=[4154938, 4154938, 4154938, 4154936],p=window.__GEO_SD||[],s='',ok=true,i,x,q=location.search,r=/[?&]r=\d+/;window.__GEO_SD=undefined;for(i=0;i<H.length;i++){x=p[i];if(!x||x[0]!==H[i]||typeof x[1]!=='string'||x[1].length!==L[i]){ok=false;break}s+=x[1]}if(ok){document.getElementById('data').textContent=s;if(r.test(q)&&history.replaceState)history.replaceState(null,'',location.pathname+q.replace(r,'').replace(/^&/,'?')+location.hash);return}if(!r.test(q)){location.replace(location.pathname+(q?q+'&':'?')+'r='+Date.now()+location.hash);return}var d=document.createElement('div');d.id='geo-load-fail';d.setAttribute('role','alert');d.dir='rtl';d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:2147483647;padding:16px;background:#fff;color:#111;font:16px/1.5 system-ui,sans-serif;text-align:center;border-bottom:1px solid #999';d.textContent="לא הצלחנו לטעון את התוכן של העמוד. נסו לרענן את הדף בעוד כמה דקות.";document.body.appendChild(d)})();</script>
 <script>
 /* D82: מסך הטעינה (#splash, ב-HTML הראשוני) נעלם בדהייה קצרה (.25s) ואז מוסר מה-DOM — נקרא מ-nav.js אחרי שהבית
    צויר, ומיד אם ה-JS נופל (שלא יישאר מסך טעינה תקוע מעל שגיאה). עמיד למעטפת הבדיקה בלי DOM אמיתי. */
@@ -12016,7 +12033,7 @@ const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').m
 const $ = id=>document.getElementById(id);
 const esc = s=>String(s==null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const axc = a=>'ax-'+(AXC[a] || 'x');
-const he = c=>MX.HE[c] || '';
+const he = c=>MX.HE[c] || (typeof HB_HE!=='undefined' && HB_HE[c]) || '';
 const nEv = n=>n===1 ? 'אירוע אחד' : n+' אירועים';
 const EV = MX.E, EK = {}; EV.forEach(e=>EK[e.k] = e);
 const WIN = EV.filter(e=>e.w);
@@ -12081,11 +12098,11 @@ function draw(){
     return '<g transform="translate('+p[0]+' '+p[1]+')"><g class="hb-d hd '+axc(h.axis)+(h.em ? ' em' : '')+(n ? '' : ' qt')+(nw ? ' nw' : '')+'" data-h="'+h.id+'" style="--i:'+i+'" tabindex="0" role="button" aria-label="'+esc(h.title+' · '+h.word+(h.em ? ' · בהתהוות' : '')+' · '+(n ? nEv(n)+' ב-14 ימים' : 'שקט 14 יום'))+'">'+
       (o[0]||o[1] ? '<line class="mx-tie" x1="0" y1="0" x2="'+o[0]+'" y2="'+o[1]+'"/><circle class="mx-anc" r="1.8"/>' : '')+'<g transform="translate('+o[0]+' '+o[1]+')"><g class="dg"><circle class="hb-hit" r="20"/><circle class="hb-ring" r="'+(r+3.5).toFixed(1)+'"/><circle class="hb-dot" r="'+r.toFixed(1)+'"/>'+(n>1 ? '<text class="hb-n" y="3.4" text-anchor="middle">'+n+'</text>' : '')+'</g></g></g>'+
       '<g class="mx-lb h" data-h="'+h.id+'"><text x="'+o[0]+'" y="'+(o[1] - r - 8).toFixed(1)+'" text-anchor="middle">'+esc(shortName(h))+'</text></g></g>'; }).join('')+'</g>';
-  g.innerHTML = s;
+  g.innerHTML = s; m2draw();
 }
 function legend(){
   const X = AX.concat(HUBS.some(h=>!AXC[h.axis]) ? ['ישראל'] : []);
-  $('mx-leg').innerHTML = '<div class="r1">'+X.map(a=>'<span class="'+axc(a)+'"><i></i>'+esc(a)+'</span>').join('')+'</div>'+
+  $('mx-leg').innerHTML = '<div class="r1 m2-lg"><span><b class="m2-sw"></b>מדינה צבועה = אירוע בה ב-14 יום</span></div><div class="r1">'+X.map(a=>'<span class="'+axc(a)+'"><i></i>'+esc(a)+'</span>').join('')+'</div>'+
     (S.ly==='h' ? '<div class="r1"><span><i class="em"></i>בהתהוות</span><span><i class="qt"></i>שקט 14 יום</span></div><small>צבע = הציר · אפור = צמתי ישראל (מחוץ לשלושת הצירים) · מספר = אירועים ב-14 ימים</small>'
                 : '<small>צבע = הציר הבולט · גודל הנקודה = מספר האירועים</small>');
 }
@@ -12133,7 +12150,7 @@ function labels(){
   const fp = fc ? MX.C[fc] : null;
   const RL = fp ? [...g.querySelectorAll('.mx-lb.r')].map(l=>{ const p = l.parentNode.getAttribute('transform').match(/[\d.]+/g).map(Number); return {l:l, d:Math.hypot(p[0]-fp[0], p[1]-fp[1])}; }).filter(o=>o.d > 20 && o.d < 60).sort((a, b)=>a.d-b.d).slice(0, 1).map(o=>o.l) : [];
   g.querySelectorAll('.mx-lb.r').forEach(l=>l.classList.toggle('on', RL.indexOf(l)>=0));   /* תווית אזור אחת, הקרובה */
-  declutter();
+  m2labels();
 }
 /* תוויות לא עולות על נקודות ולא זו על זו: לפי סדר עדיפות (צומת נבחר ⇒ המדינה הממוקדת ⇒ אזור ⇒ שכנות) */
 function declutter(){
@@ -12190,7 +12207,7 @@ function wire(){
     if(t.closest('#mx-full')){ setFull(true); return; }
     const hd = t.closest('.hb-d.hd'); if(hd){ openHub(hd.getAttribute('data-h')); return; }
     const cd = t.closest('.hb-d.cd'); if(cd){ openCountry(cd.getAttribute('data-c')); return; }
-    const cf = t.closest('.hb-cf'); if(cf && !cf.classList.contains('off')){ openCountry(cf.getAttribute('data-c')); return; }
+    const cf = t.closest('.hb-cf'); if(cf){ openCountry(cf.getAttribute('data-c')); return; }
     if(!t.closest('.mx-day,.hb-leg') && S.sel && !S.focus) closeSheet(); }, true);
   wr.addEventListener('keydown', e=>{ const d = e.target.closest && e.target.closest('.hb-d'); if(d && (e.key==='Enter' || e.key===' ')){ e.preventDefault(); d.classList.contains('hd') ? openHub(d.getAttribute('data-h')) : openCountry(d.getAttribute('data-c')); } });
 }
@@ -12228,10 +12245,10 @@ function openCountry(c){
   const hubs = HUBS.filter(h=>h.ca[c]).sort((a, b)=>(b.cw[c]||0)-(a.cw[c]||0) || (b.ca[c]||0)-(a.ca[c]||0));
   const L = d ? d.L.slice(0, 4) : EV.filter(e=>e.c===c).sort(byDate).slice(0, 3), arc = EV.filter(e=>e.c===c && !e.w).length;
   openSheet('<div class="mx-sh"><span class="hb-chip">מדינה</span><span class="sp"></span><button type="button" class="mx-x" data-close aria-label="סגירה">×</button></div>'+
-    '<h3>'+esc(he(c))+'</h3><p class="mx-meta"><b>'+(d ? nEv(d.L.length)+' ב-14 הימים' : 'שקט 14 יום')+'</b> · '+arc+' בארכיון</p>'+
+    '<h3>'+esc(he(c))+'</h3>'+m2capLine(c)+'<p class="mx-meta"><b>'+(d ? nEv(d.L.length)+' ב-14 הימים' : 'שקט 14 יום')+'</b> · '+arc+' בארכיון</p>'+
     (hubs.length ? '<p class="mx-h4">צמתים שנוגעים כאן</p><div class="mx-hubs">'+hubs.map(h=>hubRow(h, c)).join('')+'</div>' : '')+
-    '<p class="mx-h4">'+(d ? 'אירועים אחרונים' : 'מהארכיון')+'</p><ul class="mx-evs">'+L.map(evRow).join('')+'</ul>'+(d && d.L.length>4 ? '<p class="mx-more">ועוד '+(d.L.length-4)+' — ב«אירועים».</p>' : ''), 'מדינה: '+he(c));
-  const p = MX.C[c]; keepVisible(p[0], p[1]);
+    (L.length ? '<p class="mx-h4">'+(d ? 'אירועים אחרונים' : 'מהארכיון')+'</p><ul class="mx-evs">'+L.map(evRow).join('')+'</ul>' : '<p class="mx-more">אין אצלנו אירועים שנוגעים במדינה הזאת.</p>')+(d && d.L.length>4 ? '<p class="mx-more">ועוד '+(d.L.length-4)+' — ב«אירועים».</p>' : ''), 'מדינה: '+he(c));
+  const p = MX.C[c] || (typeof hbPt==='function' && hbPt(c)); if(p) m2keep(p[0], p[1], c);
 }
 /* ---- מסך מלא / מצב ממוקד ---- */
 function setFull(on, noHist){
@@ -12316,6 +12333,110 @@ document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(dp.cla
   const end = e=>{ if(y0==null) return; const dy = e.clientY - y0; y0 = null; sh.style.transition = ''; sh.style.transform = ''; if(dy > 70){ if(S.focus) setFull(false); closeSheet(); } };
   gr.addEventListener('pointerup', end); gr.addEventListener('pointercancel', end); })();
 window.addEventListener('resize', ()=>{ const k = V.k/V.kmin, cx = (V.w/2 - V.x)/V.k, cy = (V.h/2 - V.y)/V.k; measure(); viewOn(cx, cy, V.kmin*k, 0); });
+/* ===== s102 n-maps חלק ב (GEO_MAPS2=1) — מפת הצמתים: שם על כל מדינה צבועה, שמות הקשר בזום, גבולות לכל המדינות, הקשה על כל מדינה, בירה.
+   קטע קוד שמוזרק ע"י tools/maps2_build.py לתוך d305_map.js (בתוך ה-closure — משתמש ב-g, V, S, MX, HUBS, ctryAgg, he, esc). כבוי ⇒ הקובץ לא נכנס לבנייה.
+   כלל הצפיפות (שקוף לבעלים):
+   · סדר עדיפות: תווית הצומת שנבחר ⇒ המדינה שנבחרה/הממוקדת ⇒ הבירה שלה ⇒ מדינות צבועות (יותר אירועים קודם) ⇒ תוויות אזור ⇒ שמות הקשר (מדינה גדולה קודם).
+   · שמות הקשר (מדינות בלי אירוע) רק מזום ×2, ורק למדינה שרוחבה על המסך ≥ 60px וגובהה ≥ 18px.
+   · לכל היותר ⌊רוחב×גובה המפה / 7000⌋ שמות מדינה בבת אחת (טלפון ~16); כל תווית לא עולה על נקודה ולא על תווית אחרת — אחרת מוסתרת.
+   בירה: מ-tools/geo/names_he.json (רשימה שלנו), בלי שטח שאינו מדינה (cap_exc) — M2CAP מוזרק בבנייה; על המפה שם העיר בלבד (מושב הממשלה / המרכז המוכר), בחלונית — m2capLine.
+   מדינות במקום שהקשת (s102 n-maps-prelight, REVIEW_MAPS ב9): הקשה על המפה פותחת את מה שנפתח היום (נקודת צומת, נקודת מדינה או מדינה), ובגיליון — «מדינות במקום שהקשת»:
+   כל מדינה אחרת שנמצאת ברוחב אצבע מנקודת המגע או מתחת לאזור ההקשה של הנקודה, ככפתור (hm-chip, ≥44px) שפותח את המדינה. כך מדינה קטנה שנקודה מכסה
+   (ישראל, לבנון, ירדן…) או שמתחת לצורה אחרת (צפון קפריסין) נגישה בשתי הקשות בכל זום, בלי להחליש את ההקשה על הנקודה. ===== */
+const M2CAP = {"Afghanistan":["קאבול",692.2,137.3],"Albania":["טירנה",555.1,118.4],"Algeria":["אלג׳יר",508.5,131.1],"Andorra":["אנדורה לה ולה",504.2,115.1],"Angola":["לואנדה",536.8,257.6],"Antigua and Barb.":["סנט ג׳ונס",328.2,185.6],"Argentina":["בואנוס איירס",337.7,329.1],"Armenia":["ירוואן",623.6,121.6],"Australia":["קנברה",914.2,331.0],"Austria":["וינה",545.5,99.3],"Azerbaijan":["באקו",638.5,121.0],"Bahamas":["נסאו",285.1,163.5],"Bahrain":["מנאמה",640.5,160.3],"Bangladesh":["דאקה",751.1,167.2],"Barbados":["ברידג׳טאון",334.4,196.7],"Belarus":["מינסק",576.6,83.5],"Belgium":["בריסל",512.0,92.0],"Belize":["בלמופן",253.4,185.2],"Benin":["קוטונו",506.7,215.4,"s","פורטו-נובו"],"Bhutan":["תימפו",749.0,156.8],"Bolivia":["לה פאס",310.7,278.9,"s","סוקרה"],"Bosnia and Herz.":["סרייבו",551.1,111.4],"Botswana":["גבורונה",572.0,301.5],"Brazil":["ברזיליה",366.9,276.9],"Brunei":["בנדר סרי בגוואן",819.3,219.5],"Bulgaria":["סופיה",564.8,114.6],"Burkina Faso":["ואגאדוגו",495.8,198.7],"Burundi":["גיטגה",583.1,242.6],"Cabo Verde":["פראיה",434.7,191.6],"Cambodia":["פנום פן",791.4,201.0],"Cameroon":["יאונדה",532.0,222.3],"Canada":["אוטווה",289.7,107.0],"Central African Rep.":["בנגי",551.6,221.0],"Chad":["נג׳מנה",541.8,199.5],"Chile":["סנטיאגו",303.7,325.9],"China":["בייג׳ינג",823.3,122.4],"Colombia":["בוגוטה",294.2,220.3],"Comoros":["מורוני",620.1,265.5],"Congo":["ברזוויל",542.5,244.9],"Costa Rica":["סן חוסה",266.4,205.5],"Croatia":["זאגרב",544.4,106.0],"Cuba":["הוואנה",271.2,168.9],"Cyprus":["ניקוסיה",592.7,135.5],"Czechia":["פראג",540.1,94.1],"Côte d'Ivoire":["אביג׳אן",488.8,218.3,"s","יאמוסוקרו"],"Dem. Rep. Congo":["קינשאסה",542.5,245.1],"Denmark":["קופנהגן",534.9,78.6],"Djibouti":["ג׳יבוטי",619.9,200.9],"Dominica":["רוזו",329.5,190.6],"Dominican Rep.":["סנטו דומינגו",305.8,181.8],"Ecuador":["קיטו",281.9,233.7],"Egypt":["קהיר",586.8,149.7],"El Salvador":["סן סלוודור",252.2,195.0],"Eq. Guinea":["מלאבו",524.4,222.7,"s","סיודד דה לה פאס"],"Eritrea":["אסמרה",608.1,190.5],"Estonia":["טאלין",568.7,68.2],"Ethiopia":["אדיס אבבה",607.5,208.0],"Fiji":["סובה",995.7,283.4],"Finland":["הלסינקי",569.3,66.1],"France":["פריז",506.5,97.5],"Gabon":["ליברוויל",526.3,232.0],"Gambia":["בנג׳ול",453.9,195.7],"Georgia":["טביליסי",624.4,117.3],"Germany":["ברלין",537.2,87.3],"Ghana":["אקרה",499.4,217.7],"Greece":["אתונה",565.9,127.7],"Grenada":["סנט ג׳ורג׳ס",328.5,199.6],"Guatemala":["גואטמלה סיטי",248.5,192.5],"Guinea":["קונאקרי",462.0,206.6],"Guinea-Bissau":["ביסאו",456.7,200.1],"Guyana":["ג׳ורג׳טאון",338.4,214.2],"Haiti":["פורט-או-פרנס",299.1,181.6],"Honduras":["טגוסיגלפה",257.7,193.9],"Hungary":["בודפשט",553.0,101.3],"Iceland":["רייקיאוויק",439.1,55.1],"India":["ניו דלהי",714.4,153.7],"Indonesia":["ג׳קרטה",796.7,250.2],"Iran":["טהראן",642.8,134.1],"Iraq":["בגדד",623.3,140.6],"Ireland":["דבלין",482.6,85.1],"Israel":["ירושלים",597.8,144.9],"Italy":["רומא",534.7,116.8],"Jamaica":["קינגסטון",286.8,183.2],"Japan":["טוקיו",888.2,134.1],"Jordan":["עמאן",599.8,144.4],"Kazakhstan":["אסטנה",698.4,91.1],"Kenya":["ניירובי",602.3,236.6],"Kiribati":["טאראווה",980.6,229.4],"Kosovo":["פרישטינה",558.8,114.7],"Kuwait":["כווית",633.3,151.6],"Kyrgyzstan":["בישקק",707.2,114.1],"Laos":["וינטיאן",785.0,183.2],"Latvia":["ריגה",566.9,75.1],"Lebanon":["ביירות",598.6,139.1],"Lesotho":["מסרו",576.3,314.4],"Liberia":["מונרוביה",470.0,215.5],"Libya":["טריפולי",536.6,141.8,"r","טריפולי","בנגאזי"],"Liechtenstein":["ואדוץ",526.4,102.3],"Lithuania":["וילנה",570.3,81.3],"Luxembourg":["לוקסמבורג",517.0,95.4],"Macedonia":["סקופיה",559.5,116.5],"Madagascar":["אנטננריבו",632.0,285.6],"Malawi":["לילונגווה",593.8,271.9],"Malaysia":["פוטרג׳איה",782.5,225.0,"s","קואלה לומפור"],"Maldives":["מאלה",704.2,221.5],"Mali":["במקו",477.8,198.0],"Malta":["ולטה",540.3,133.5],"Marshall Is.":["מג׳ורו",976.1,213.4],"Mauritania":["נואקשוט",455.6,182.9],"Mauritius":["פורט לואי",659.7,289.0],"Mexico":["מקסיקו סיטי",224.6,179.1],"Micronesia":["פאליקיר",939.3,213.9],"Moldova":["קישינב",580.2,102.6],"Monaco":["מונקו",520.6,111.7],"Mongolia":["אולן בטור",797.0,100.1],"Montenegro":["פודגוריצה",553.5,115.2],"Morocco":["רבאט",481.0,138.7],"Mozambique":["מפוטו",590.5,305.1],"Myanmar":["נייפידאו",767.0,178.2],"Namibia":["וינדהוק",547.5,295.7],"Nauru":["יארן",963.7,234.6],"Nepal":["קטמנדו",737.0,156.2],"Netherlands":["האג",511.9,88.6,"s","אמסטרדם"],"New Zealand":["ולינגטון",985.5,347.6],"Nicaragua":["מנגואה",260.4,199.3],"Niger":["ניאמיי",505.9,195.6],"Nigeria":["אבוג׳ה",520.8,207.9],"North Korea":["פיונגיאנג",849.3,124.8],"Norway":["אוסלו",529.9,66.8],"Oman":["מסקט",662.2,167.6],"Pakistan":["איסלמאבאד",703.0,139.6],"Palau":["נגרולמוד",874.0,212.3],"Panama":["פנמה סיטי",279.1,208.2],"Papua New Guinea":["פורט מורסבי",908.9,259.3],"Paraguay":["אסונסיון",339.9,303.2],"Peru":["לימה",286.0,266.5],"Philippines":["מנילה",836.1,192.5],"Poland":["ורשה",558.3,88.1],"Portugal":["ליסבון",474.6,125.6],"Qatar":["דוחה",643.1,162.9],"Romania":["בוקרשט",572.5,109.8],"Russia":["מוסקבה",604.5,78.4],"Rwanda":["קיגאלי",583.5,238.5],"S. Sudan":["ג׳ובה",587.7,219.6],"Saint Lucia":["קסטריז",330.6,194.2],"Samoa":["אפיה",22.9,271.5],"San Marino":["סן מרינו",534.6,111.2],"Saudi Arabia":["ריאד",629.8,164.7],"Senegal":["דקר",451.5,192.2],"Serbia":["בלגרד",556.9,108.7],"Seychelles":["ויקטוריה",654.0,245.9],"Sierra Leone":["פריטאון",463.2,209.6],"Singapore":["סינגפור",788.5,229.5],"Slovakia":["ברטיסלבה",547.5,99.5],"Slovenia":["ליובליאנה",540.3,105.3],"Solomon Is.":["הוניארה",944.3,259.3],"Somalia":["מוגדישו",626.0,227.3],"South Africa":["פרטוריה",578.4,304.4],"South Korea":["סיאול",852.8,128.8],"Spain":["מדריד",489.8,121.0],"Sri Lanka":["קולומבו",721.8,213.9,"s","סרי ג׳יאוורדנפורה קוטה"],"St. Kitts and Nevis":["בסטר",325.8,185.1],"St. Vin. and Gren.":["קינגסטאון",329.9,196.6],"Sudan":["ח׳רטום",590.4,189.8,"r","ח׳רטום","ניאלה"],"Suriname":["פרמריבו",346.8,216.9],"Sweden":["שטוקהולם",550.2,68.5],"Switzerland":["ברן",520.7,102.9],"Syria":["דמשק",600.8,140.1],"São Tomé and Principe":["סאו טומה",518.7,232.1],"Taiwan":["טאיפיי",837.7,163.6],"Tajikistan":["דושנבה",691.0,126.1],"Tanzania":["דודומה",599.3,250.2],"Thailand":["בנגקוק",779.2,194.9],"Timor-Leste":["דילי",848.8,256.8],"Togo":["לומה",503.4,216.1],"Tonga":["נוקואלופה",13.3,291.7],"Trinidad and Tobago":["פורט אוף ספיין",329.1,203.5],"Tunisia":["תוניס",528.3,131.0],"Turkey":["אנקרה",591.3,122.3],"Turkmenistan":["אשגבאט",662.2,127.8],"Uganda":["קמפלה",590.5,232.2],"Ukraine":["קייב",584.8,93.1],"United Arab Emirates":["אבו דאבי",651.0,165.2],"United Kingdom":["לונדון",499.7,90.2],"United States of America":["וושינגטון",286.1,125.1],"Uruguay":["מונטווידאו",343.9,329.9],"Uzbekistan":["טשקנט",692.4,118.5],"Vanuatu":["פורט וילה",967.5,282.3],"Vatican":["הוותיקן",534.6,116.8],"Venezuela":["קראקס",314.1,203.9],"Vietnam":["האנוי",794.0,174.7],"Yemen":["עדן",625.1,197.6,"r","עדן","צנעא"],"Zambia":["לוסקה",578.6,275.8],"Zimbabwe":["הרארה",586.2,282.5],"eSwatini":["מבבנה",586.5,306.1]};
+/* D557 (הכרעת בעלים): «הרשות הפלסטינית», «טייוואן», «קונגו (קינשאסה)» — רק כשהמתג דלוק; מוזרק מ-names_he.json (שדה d557) */
+const M2NAMES = {"Congo":"קונגו (ברזוויל)","Dem. Rep. Congo":"קונגו (קינשאסה)","Palestine":"הרשות הפלסטינית","Taiwan":"טייוואן"};
+Object.keys(M2NAMES).forEach(c=>{ if(typeof HB_HE!=='undefined') HB_HE[c] = M2NAMES[c]; if(MX.HE[c]) MX.HE[c] = M2NAMES[c]; });
+const M2BB = (function(){ const o = {}; if(typeof HB_CTRY==='undefined') return o;
+  Object.keys(HB_CTRY).forEach(c=>{ let best = null;
+    String(HB_CTRY[c]).split('Z').forEach(r=>{ const P = r.replace(/^M/, '').split('L').map(q=>q.split(',').map(Number)).filter(q=>q.length===2 && isFinite(q[0]) && isFinite(q[1])); if(P.length<3) return;
+      let a = 0, u0 = 1e9, u1 = -1e9, v0 = 1e9, v1 = -1e9; P.forEach((p, i)=>{ const q = P[(i+1)%P.length]; a += p[0]*q[1] - q[0]*p[1]; u0 = Math.min(u0, p[0]); u1 = Math.max(u1, p[0]); v0 = Math.min(v0, p[1]); v1 = Math.max(v1, p[1]); });
+      a = Math.abs(a/2); if(!best || a>best.a) best = {a:a, u0:u0, u1:u1, v0:v0, v1:v1}; });
+    if(best) o[c] = best; });
+  return o; })();
+const m2he = c=>(typeof HB_HE!=='undefined' && HB_HE[c]) || '';
+function m2draw(){
+  const land = g.querySelector('.hb-land'), P = MX.P;
+  /* גבולות + יעד הקשה לכל מדינה (גם בלי אירוע) — מתחת למדינות הצבועות */
+  const cf = Object.keys(M2BB).filter(c=>!P[c] && m2he(c)).map(c=>'<path class="hb-cf off m2-cf" data-c="'+esc(c)+'" d="'+HB_CTRY[c]+'"/>').join('');
+  if(land) land.insertAdjacentHTML('afterend', cf);
+  const lbx = Object.keys(M2BB).filter(c=>!MX.C[c] && m2he(c) && typeof hbPt==='function' && hbPt(c)).map(c=>{ const p = hbPt(c);
+    return '<g transform="translate('+p[0]+' '+p[1]+')"><g class="mx-lb x" data-c="'+esc(c)+'"><text y="4" text-anchor="middle">'+esc(m2he(c))+'</text></g></g>'; }).join('');
+  g.querySelector('#mx-lbc').insertAdjacentHTML('beforeend', lbx+'<g id="m2-capg"></g>');
+}
+/* הקשה על מדינה: המדינה (והבירה שלה) לא צמודות לשולי המסגרת — הזזה אופקית עד ~110px מהשוליים, ואז keepVisible הקיים */
+function m2keep(px, py, c){ const k = M2CAP[c], xs = [px].concat(k ? [k[1]] : []), lo = Math.min(...xs), hi = Math.max(...xs);
+  if(V.x + lo*V.k < 110 || V.x + hi*V.k > V.w - 110){ const cx = (lo + hi)/2; V.x = V.w/2 - cx*V.k; clamp(); apply(); labels(); }
+  keepVisible(px, py); }
+/* הכרעת מנהל s103 (GEMINI2_RULINGS ס׳7, GEMINI3_RULINGS ש9; מחליף SCREEN_RULINGS:15): על המפה — שם העיר בלבד; בחלונית — לפי סוג המדינה */
+function m2capLine(c){ const k = M2CAP[c]; if(!k) return '';
+  const t = k[3]==='s' ? 'מושב הממשלה: <b>'+esc(k[0])+'</b> · בירה רשמית: <b>'+esc(k[4])+'</b>'
+    : k[3]==='r' ? 'מרכז שלטון (מוכר בינלאומית): <b>'+esc(k[4])+'</b> · מרכז שלטון יריב/בפועל: <b>'+esc(k[5])+'</b>'
+    : 'בירה: <b>'+esc(k[0])+'</b>';
+  return '<p class="m2-capl">'+t+'</p>'; }
+/* מדינות במקום שהקשת: אזור ההקשה = מעגל ברוחב אצבע (44px) סביב נקודת המגע, ואם ההקשה פתחה נקודה — גם אזור ההקשה של הנקודה (hb-hit).
+   כל מדינה שהצורה שלה נפגעת בדגימה של האזור (כל השכבות — גם צורה שמתחת לצורה אחרת, כמו צפון קפריסין), או שמרכז התיבה שלה בתוכו (מדינה קטנה מהדגימה).
+   הקטנות קודם (אותן קשה לפגוש בהקשה); עד 8. self = המדינה שכבר נפתחה (לא מוצגת שוב). */
+let M2TAP = {t:0, x:0, y:0};
+document.addEventListener('pointerdown', e=>{ M2TAP = {t:Date.now(), x:e.clientX, y:e.clientY, map:!!(e.target && e.target.closest && e.target.closest('#mx-svg'))}; }, true);
+function m2circles(hit){ const C = []; if(M2TAP.map && Date.now() - M2TAP.t < 2000) C.push([M2TAP.x, M2TAP.y, 22]);
+  if(hit){ const r = hit.getBoundingClientRect(); if(r.width > 0) C.push([(r.left + r.right)/2, (r.top + r.bottom)/2, r.width/2]); }
+  return C; }
+function m2under(C, self){
+  const got = {}, R = svg.getBoundingClientRect();
+  C.forEach(([cx, cy, rad])=>{
+    for(let i = -4; i<=4; i++) for(let j = -4; j<=4; j++){ const x = cx + i*rad/4, y = cy + j*rad/4; if(Math.hypot(x - cx, y - cy) > rad) continue;
+      document.elementsFromPoint(x, y).forEach(e=>{ const c = e.classList && e.classList.contains('hb-cf') && e.getAttribute('data-c'); if(c) got[c] = 1; }); }
+    Object.keys(M2BB).forEach(c=>{ const b = M2BB[c], x = R.left + V.x + (b.u0 + b.u1)/2*V.k, y = R.top + V.y + (b.v0 + b.v1)/2*V.k; if(Math.hypot(x - cx, y - cy) <= rad) got[c] = 1; }); });
+  const area = c=>{ const b = M2BB[c]; return b ? (b.u1 - b.u0)*(b.v1 - b.v0) : 1e9; };
+  return Object.keys(got).filter(c=>c!==self && m2he(c)).sort((a, b)=>area(a) - area(b)).slice(0, 8); }
+function m2underRow(L){ return L.length ? '<p class="mx-h4">מדינות במקום שהקשת</p><div class="m2-cbs">'+L.map(c=>'<button type="button" class="hm-chip" data-m2c="'+esc(c)+'">'+esc(m2he(c))+'</button>').join('')+'</div>' : ''; }
+/* REVIEW_prelight ס׳ג (הכרעת מנהל מכוח D562): בגיליון צומת השורה נכנסת אחרי «לצומת ←» ורשימת האירועים — לא דוחפת אותם אל מתחת למסך;
+   בגיליון מדינה — אחרי שורת המטא, כמו קודם (שם היא הדרך לבחור את המדינה הקטנה) */
+function m2addUnder(L, hub){ const m = hub ? (sb.querySelector('.mx-cta') || sb.querySelector('.mx-evs')) : sb.querySelector('.mx-meta'); if(m && L.length) m.insertAdjacentHTML('afterend', m2underRow(L)); }
+const m2openHub = openHub, m2openCountry = openCountry;
+openHub = function(id){ const L = m2under(m2circles(g.querySelector('.hb-d.hd[data-h="'+id+'"] .hb-hit')), ''); m2openHub(id); if(S.sel && S.sel.h===id) m2addUnder(L, true); };
+openCountry = function(c, noUnder){ const d = [...g.querySelectorAll('.hb-d.cd')].find(e=>e.getAttribute('data-c')===c), L = noUnder ? [] : m2under(m2circles(d && d.querySelector('.hb-hit')), c);
+  m2openCountry(c); if(S.sel && S.sel.c===c) m2addUnder(L); };
+document.addEventListener('click', e=>{ const b = e.target && e.target.closest && e.target.closest('[data-m2c]'); if(b){ e.stopPropagation(); M2TAP = {t:0}; openCountry(b.getAttribute('data-m2c'), true); } }, true);
+function m2labels(){
+  const z = V.k/V.kmin, sel = S.sel && S.sel.c, fc = S.focus ? S.focus.c : '', near = S.focus ? S.focus.near : {}, agg = ctryAgg(S.ax);
+  g.querySelectorAll('.mx-lb.c').forEach(l=>{ const c = l.getAttribute('data-c'); l.classList.toggle('on', !!agg[c] || c===sel || !!(fc && (c===fc || near[c]))); });
+  g.querySelectorAll('.mx-lb.x').forEach(l=>{ const c = l.getAttribute('data-c'), b = M2BB[c]; let on = c===sel;
+    if(!on && z>=2 && b){ const w = (b.u1-b.u0)*V.k, h = (b.v1-b.v0)*V.k, sx = V.x + (b.u0+b.u1)/2*V.k, sy = V.y + (b.v0+b.v1)/2*V.k; on = w>=60 && h>=18 && sx>8 && sx<V.w-8 && sy>8 && sy<V.h-8; }
+    l.classList.toggle('on', on); });
+  const cg = g.querySelector('#m2-capg'), cap = sel ? M2CAP[sel] : null;
+  if(cg){ cg.innerHTML = cap ? '<g transform="translate('+cap[1]+' '+cap[2]+')"><g class="mx-lb k on" data-c="'+esc(sel)+'"><circle class="m2-capd" r="3.4"/><text x="-7" y="4" text-anchor="start">'+esc(cap[0])+'</text></g></g>' : ''; }
+  m2declutter();
+}
+function m2declutter(){
+  const on = [...g.querySelectorAll('.mx-lb.on')]; if(!on.length) return;
+  const sel = S.sel && S.sel.c, fc = S.focus ? S.focus.c : '', agg = ctryAgg(S.ax), lim = Math.max(6, Math.floor(V.w*V.h/7000));
+  const area = c=>{ const b = M2BB[c]; return b ? (b.u1-b.u0)*(b.v1-b.v0) : 0; };
+  const pri = l=>{ const c = l.getAttribute('data-c'); if(l.classList.contains('h')) return 0; if(c && c===sel) return 0;   /* המדינה שהקישו עליה ובירתה — תמיד מוצגות (בחירה מפורשת); החלופות עדיין מנסות מקום פנוי */
+    if(c && c===fc) return 1;
+    if(l.classList.contains('c')) return 2 + 1/(1 + (agg[c] ? agg[c].L.length : 0)); if(l.classList.contains('r')) return 3.5; return 4 + 1/(1 + area(c)); };
+  on.sort((a, b)=>pri(a)-pri(b));
+  const box = el=>{ const r = el.getBoundingClientRect(); return {l:r.left-2, r:r.right+2, t:r.top-2, b:r.bottom+2}; }   /* כולל ההילה (stroke 3px ⇒ 1.5px לכל צד) */, hit = (a, b)=>a.l<b.r && b.l<a.r && a.t<b.b && b.t<a.b;
+  const R = svg.getBoundingClientRect(), out = b=>b.l<R.left+2 || b.r>R.right-2 || b.t<R.top+2 || b.b>R.bottom-2;
+  const dots = [...g.querySelectorAll('.hb-d:not(.off) .hb-dot')].map(box), kept = [...document.querySelectorAll('#mx-map .hb-ctl, #mx-map .hb-leg, #mx-map .mx-seg, #mx-map .mx-full')].filter(e=>e.getClientRects().length).map(box); let n = 0;   /* הכפתורים והמקרא שמעל המפה = מכשול */
+  /* חלופות מיקום (בלי לזוז מהמדינה): שם מתחת לנקודה ⇒ מעליה; בירה מימין לנקודה ⇒ משמאל ⇒ מעל */
+  const ALT = {c:[[null, null], [null, -14], [-22, 8, 'start'], [22, 8, 'end'], [null, 42]], x:[[null, null], [null, -12], [null, 20]], k:[[-7, 4, 'start'], [7, 4, 'end'], [-7, 18, 'start'], [7, 18, 'end'], [0, 20, 'middle'], [0, -10, 'middle'], [-7, -10, 'start'], [7, -10, 'end']]};   /* [x, y, עיגון]; null = המקורי. הטקסט RTL: start = הקצה הימני ⇒ x שלילי+start = משמאל לנקודה */
+  on.forEach(l=>{ const p = pri(l), t = l.querySelector('text'), kind = ['c', 'x', 'k'].find(k=>l.classList.contains(k));
+    if(!t.__m2) t.__m2 = {x:t.getAttribute('x'), y:t.getAttribute('y'), a:t.getAttribute('text-anchor')};
+    const o = t.__m2; t.setAttribute('x', o.x || 0); t.setAttribute('y', o.y || 0); t.setAttribute('text-anchor', o.a || 'middle');
+    let ok = false, b = null;
+    const alts = kind ? ALT[kind] : [[null, null]];
+    const tryAt = strict=>{ for(const [ax, ay, anc] of alts){ t.setAttribute('x', ax==null ? (o.x || 0) : ax); t.setAttribute('y', ay==null ? (o.y || 0) : ay); t.setAttribute('text-anchor', anc || o.a || 'middle');
+        b = box(t); if(!(kept.some(k=>hit(k, b)) || (strict>1 && dots.some(d=>hit(d, b))) || (strict>0 && out(b)) || (p>=2 && (n>=lim || out(b))))) return true; } return false; };
+    const selC = p===0 && !l.classList.contains('h');   /* המדינה שהקישו עליה ובירתה */
+    ok = tryAt(2) || (p===0 && !selC && (tryAt(1) || tryAt(0)));
+    if(!ok && p===0 && !selC){ t.setAttribute('x', o.x || 0); t.setAttribute('y', o.y || 0); t.setAttribute('text-anchor', o.a || 'middle'); b = box(t); ok = true; }   /* תווית צומת: כמו קודם */
+    /* REVIEW_MAPS ח3 (נסגר): המדינה שהקישו עליה ובירתה — רק במקום פנוי (לא על נקודה, תווית, כפתור או מחוץ למסגרת); אין מקום ⇒ השם לא נכתב על המפה (הגיליון נפתח ושם השם) */
+    if(!ok){ l.classList.remove('on'); return; }
+    kept.push(b); if(kind==='k') kept.push(box(l.querySelector('circle'))); if(p>=2) n++; });
+}
+
 /* ---- התחלה ---- */
 
 draw(); legend(); chips(); timeline(); list(); wire(); fit(0); paint();
